@@ -1,0 +1,20 @@
+{
+    "name": "Gameplay.Presenters",
+    "rootNamespace": "Gameplay.Presenters",
+    "references": [
+        "GUID:e3c0c0075d4a3f246a98173bdb56a9e3",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:5c01796d064528144a599661eaab93a6",
+        "GUID:5f92bd1b734130f4abd446ddf96298a7",
+        "GUID:41b311f2b7611a54f87077f303a97e2c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
