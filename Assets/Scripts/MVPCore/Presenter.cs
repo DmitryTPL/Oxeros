@@ -7,12 +7,13 @@ namespace MVP
     public abstract class Presenter : IPresenter
     {
         private PresenterViewSharedData _sharedData;
+        private readonly CancellationTokenSource _destroyCancellationTokenSource = new();
 
         public event Action InitializationCompleted;
 
         public Guid Guid { get; }
 
-        public CancellationToken DestroyCancellationToken { get; set; }
+        protected CancellationToken DestroyCancellationToken => _destroyCancellationTokenSource.Token;
 
         protected bool IsEnable { get; private set; }
 
@@ -55,6 +56,11 @@ namespace MVP
             where TData : PresenterViewSharedData
         {
             _sharedData = data;
+        }
+        
+        public void InvokeDestroyCancellationToken()
+        {
+            _destroyCancellationTokenSource.Cancel();
         }
 
         public override bool Equals(object obj)

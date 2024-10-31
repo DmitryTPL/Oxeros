@@ -41,7 +41,7 @@ namespace MVP
 
             _guid = presenter.Guid.ToString();
 
-            _presenter.DestroyCancellationToken = gameObject.GetCancellationTokenOnDestroy();
+            gameObject.GetCancellationTokenOnDestroy().Register(presenter.InvokeDestroyCancellationToken);
 
             TryUpdateSharedData();
 
