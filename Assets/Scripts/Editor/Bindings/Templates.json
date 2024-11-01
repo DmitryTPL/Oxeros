@@ -1,0 +1,159 @@
+{
+    "Animation_AnimationToStateBindingPresenter": {
+        "Usings": [
+            "System",
+            "MVP",
+            "StateBindings",
+            "UnityEngine",
+            "Zenject"
+        ],
+        "RelativeDirectory": "Presenters/$NAME$/StateBindings",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$AnimationToStateBindingPresenter",
+        "Inheritances": [
+            "BaseDataToStateBindingPresenter<$NAME$State, $NAME$AnimationToStateBinding, AnimationData<$NAME$State, $NAME$AnimationLayer>>"
+        ],
+        "Constraints": [],
+        "Content": [
+            "[Serializable]",
+            "public class Data : PresenterViewSharedData",
+            "{",
+            "    [SerializeField] private Animator _animator;",
+            "    [SerializeField] private float _crossFadeTime;",
+            "",
+            "    public Animator Animator => _animator;",
+            "    public float CrossFadeTime => _crossFadeTime;",
+            "}",
+            "",
+            "private readonly I$NAME$AnimationHandler _animationHandler;",
+            "",
+            "public $NAME$AnimationToStateBindingPresenter()",
+            "{",
+            "}",
+            "",
+            "[Inject]",
+            "public $NAME$AnimationToStateBindingPresenter(I$NAME$AnimationHandler animationHandler)",
+            "{",
+            "    _animationHandler = animationHandler;",
+            "}",
+            "",
+            "protected override void InitializeData()",
+            "{",
+            "    base.InitializeData();",
+            "",
+            "    var data = GetSharedData<Data>();",
+            "",
+            "    _animationHandler.Init(States, data.Animator, data.CrossFadeTime);",
+            "}",
+            "",
+            "protected override void ProcessStateData(AnimationData<$NAME$State, $NAME$AnimationLayer> data)",
+            "{",
+            "    _animationHandler.StateChanged(CurrentState);",
+            "}",
+            "",
+            "protected override void ProcessStateDataAbsent()",
+            "{",
+            "    _animationHandler.StateChanged(CurrentState);",
+            "}"
+        ]
+    },
+    "Animation_AnimationToStateBindingView": {
+        "Usings": [
+            "MVP",
+            "StateBindings",
+            "UnityEngine"
+        ],
+        "RelativeDirectory": "Views/$NAME$/StateBindings",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$AnimationToStateBindingView",
+        "Inheritances": [
+            "BaseDataToStateBindingView<$NAME$AnimationToStateBindingPresenter, $NAME$State, $NAME$AnimationToStateBinding, AnimationData<$NAME$State, $NAME$AnimationLayer>>"
+        ],
+        "Constraints": [],
+        "Content": [
+            "[SerializeField] private CharacterAnimationToStateBindingPresenter.Data _data;",
+            "",
+            "protected override PresenterViewSharedData SharedData => _data;"
+        ]
+    },
+    "Animation_AnimationToStateBinding": {
+        "Usings": [
+            "System",
+            "StateBindings"
+        ],
+        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "Attributes": [
+            "Serializable"
+        ],
+        "DataType": "class",
+        "Type": "$NAME$AnimationToStateBinding",
+        "Inheritances": [
+            "BaseDataToStateBinding<AnimationData<$NAME$State, $NAME$AnimationLayer>, $NAME$State>"
+        ],
+        "Constraints": [],
+        "Content": []
+    },
+    "Animation_AnimationLayer": {
+        "Usings": [],
+        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "Attributes": [],
+        "DataType": "enum",
+        "Type": "$NAME$AnimationLayer",
+        "Inheritances": [],
+        "Constraints": [],
+        "Content": [
+            "BaseLayer"
+        ]
+    },
+    "Animation_AnimationHandler": {
+        "Usings": [
+            "StateBindings"
+        ],
+        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$AnimationHandler",
+        "Inheritances": [
+            "AnimationHandler<$NAME$State, $NAME$AnimationLayer>",
+            "I$NAME$AnimationHandler"
+        ],
+        "Constraints": [],
+        "Content": []
+    },
+    "Animation_IAnimationHandler": {
+        "Usings": [
+            "StateBindings"
+        ],
+        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "Attributes": [],
+        "DataType": "interface",
+        "Type": "I$NAME$AnimationHandler",
+        "Inheritances": [
+            "IAnimationHandler<$NAME$State, $NAME$AnimationLayer>"
+        ],
+        "Constraints": [],
+        "Content": []
+    },
+    "Animation_Installer": {
+        "Usings": [
+            "Zenject"
+        ],
+        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$AnimationToStateBindingInstaller",
+        "Inheritances": [
+            "MonoInstaller"
+        ],
+        "Constraints": [],
+        "Content": [
+            "public override void InstallBindings()",
+            "{",
+            "    Container.BindInterfacesTo<$NAME$AnimationHandler>().AsSingle();",
+            "    Container.BindInterfacesAndSelfTo<$NAME$AnimationToStateBindingPresenter>().AsSingle();",
+            "}"
+        ]
+    }
+}

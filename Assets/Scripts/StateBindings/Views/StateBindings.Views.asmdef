@@ -1,11 +1,10 @@
 {
-    "name": "Gameplay.View",
-    "rootNamespace": "Gameplay",
+    "name": "StateBindings.Views",
+    "rootNamespace": "StateBindings",
     "references": [
-        "GUID:e3c0c0075d4a3f246a98173bdb56a9e3",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:5c01796d064528144a599661eaab93a6",
-        "GUID:e23d07ba234103e428dcbfeafa22a9ac"
+        "GUID:7afa201af41372d4598479d2040edbad",
+        "GUID:eba637df3e7c7ee40948ec6a00331bfd",
+        "GUID:e3c0c0075d4a3f246a98173bdb56a9e3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

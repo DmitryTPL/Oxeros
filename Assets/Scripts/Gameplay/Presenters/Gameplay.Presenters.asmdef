@@ -1,6 +1,6 @@
 {
     "name": "Gameplay.Presenters",
-    "rootNamespace": "Gameplay.Presenters",
+    "rootNamespace": "Gameplay",
     "references": [
         "GUID:e3c0c0075d4a3f246a98173bdb56a9e3",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",

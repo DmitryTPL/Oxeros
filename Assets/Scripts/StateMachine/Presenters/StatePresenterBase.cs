@@ -15,17 +15,20 @@ namespace StateMachine
         protected IPersistentData _persistentData;
         protected AsyncReactiveProperty<TStateResult> _stateResultChanged;
         protected readonly AsyncReactiveProperty<TStateType> _stateChanged = new(default);
+        protected ISharedData<TStateType> _sharedData;
 
         public IReadOnlyAsyncReactiveProperty<TStateResult> StateResultChanged => _stateResultChanged;
         public IReadOnlyAsyncReactiveProperty<TStateType> StateChanged => _stateChanged;
 
         [Inject]
-        protected void AddDependencies(TStateResult stateResult, IStateMachine<TStateType> stateMachine, IPersistentData persistentData)
+        protected void AddDependencies(TStateResult stateResult, IStateMachine<TStateType> stateMachine, IPersistentData persistentData,
+            ISharedData<TStateType> sharedData)
         {
             _stateResult = stateResult;
             _stateMachine = stateMachine;
             _stateResultChanged = new AsyncReactiveProperty<TStateResult>(_stateResult);
             _persistentData = persistentData;
+            _sharedData = sharedData;
 
             stateMachine.CurrentState.WithoutCurrent().ForEachAsync(OnStateChanged, DestroyCancellationToken).Forget();
         }
@@ -67,6 +70,8 @@ namespace StateMachine
 
         private void OnStateChanged(TStateType nextState)
         {
+            _sharedData.CurrentState.Value = nextState;
+            
             _stateChanged.Value = nextState;
         }
     }

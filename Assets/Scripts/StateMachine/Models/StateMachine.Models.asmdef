@@ -1,11 +1,12 @@
 {
-    "name": "Gameplay.View",
-    "rootNamespace": "Gameplay",
+    "name": "StateMachine.Models",
+    "rootNamespace": "StateMachine",
     "references": [
-        "GUID:e3c0c0075d4a3f246a98173bdb56a9e3",
+        "GUID:febaf25a60dafbd44941357b21678606",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:5c01796d064528144a599661eaab93a6",
-        "GUID:e23d07ba234103e428dcbfeafa22a9ac"
+        "GUID:41b311f2b7611a54f87077f303a97e2c",
+        "GUID:f4f1f2ac873cf2643bfc671028efaf29"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
