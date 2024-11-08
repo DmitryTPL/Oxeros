@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AYellowpaper.SerializedCollections;
 using EditorAttributes;
 using UnityEngine;
 
@@ -18,28 +19,24 @@ namespace StateMachine
         bool CanTransitionInterruptStateTiming(TStateType currentState, TTransitionType interruptingTransition);
     }
 
-    public abstract class BaseTransitionsConfig<TStateType, TTransitionType, TTransitionActivity, TStatesList, TTransitionsList, TStateToTransitionsDictionary, TTransitionToStateDictionary> :
+    public abstract class BaseTransitionsConfig<TStateType, TTransitionType, TTransitionActivity, TStatesList, TTransitionsList, TStateToTransitionsDictionary,
+        TTransitionToStateDictionary> :
         ScriptableObject, ITransitionsConfig<TStateType, TTransitionType>
         where TStateType : Enum
         where TTransitionType : Enum
         where TTransitionActivity : ITransitionActivity<TTransitionType>
         where TStatesList : BaseStatesList<TStateType>, new()
         where TTransitionsList : BaseTransitionsList<TTransitionType>, new()
-        where TStateToTransitionsDictionary : UnitySerializedDictionary<TStateType, TTransitionsList>
-        where TTransitionToStateDictionary : UnitySerializedDictionary<TTransitionType, TStatesList>
+        where TStateToTransitionsDictionary : SerializedDictionary<TStateType, TTransitionsList>
+        where TTransitionToStateDictionary : SerializedDictionary<TTransitionType, TStatesList>
     {
-        [SerializeField, VerticalGroup("Transitions")] private TTransitionActivity _transitionsActivity;
-        [SerializeField, VerticalGroup("Transitions")] private TStateToTransitionsDictionary _states;
-        [SerializeField, VerticalGroup("Transitions")] private TStateToTransitionsDictionary _stateInterruptedByTransitions;
-        [SerializeField] [HideInInspector] private TTransitionToStateDictionary _transitions;
+        [SerializeField] private TTransitionActivity _transitionsActivity;
+        [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _states;
+        [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _stateInterruptedByTransitions;
+        [SerializeField, HideInInspector] private TTransitionToStateDictionary _transitions;
 
-        [VerticalGroup("Add Transition")]
         [SerializeField] private List<TStateType> _statesForAdd;
-
-        [VerticalGroup("Add Transition")]
         [SerializeField] private TTransitionType _transitionForAdd;
-
-        [VerticalGroup("Remove Transition")]
         [SerializeField] private TTransitionType _transitionForRemove;
 
         public IEnumerable<TTransitionType> GetTransitions(TStateType state)
@@ -73,7 +70,7 @@ namespace StateMachine
         }
 
         [Button]
-        private void RemoveTransitionFromAllStates()
+        public void RemoveTransitionFromAllStates()
         {
             if (_transitionForRemove == null)
             {
@@ -90,13 +87,13 @@ namespace StateMachine
         }
 
         [Button]
-        private void ClearStates()
+        public void ClearStates()
         {
             _statesForAdd.Clear();
         }
 
-        [Button, GUIColor(0, 1, 0)]
-        private void AddTransitionToStates()
+        [Button]
+        public void AddTransitionToStates()
         {
             foreach (var characterState in _statesForAdd)
             {
@@ -114,7 +111,7 @@ namespace StateMachine
             _transitionForAdd = default;
         }
 
-        [Button, GUIColor(1, 0, 0)]
+        [Button]
         public void SyncTransitionsToStateCache()
         {
             _transitions.Clear();

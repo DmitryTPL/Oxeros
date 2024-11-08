@@ -2,7 +2,7 @@
     "name": "Edtor",
     "rootNamespace": "",
     "references": [
-        ""
+        "GUID:e3c0c0075d4a3f246a98173bdb56a9e3"
     ],
     "includePlatforms": [
         "Editor"

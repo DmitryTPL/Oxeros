@@ -83,7 +83,7 @@
             "System",
             "StateBindings"
         ],
-        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "RelativeDirectory": "SharedDataTypes/$NAME$/StateBindings/Animation",
         "Attributes": [
             "Serializable"
         ],
@@ -97,7 +97,7 @@
     },
     "Animation_AnimationLayer": {
         "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "RelativeDirectory": "SharedDataTypes/$NAME$/StateBindings/Animation",
         "Attributes": [],
         "DataType": "enum",
         "Type": "$NAME$AnimationLayer",
@@ -140,7 +140,7 @@
         "Usings": [
             "Zenject"
         ],
-        "RelativeDirectory": "Models/$NAME$/StateBindings/Animation",
+        "RelativeDirectory": "Installers/$NAME$/DataToStateBindings",
         "Attributes": [],
         "DataType": "class",
         "Type": "$NAME$AnimationToStateBindingInstaller",

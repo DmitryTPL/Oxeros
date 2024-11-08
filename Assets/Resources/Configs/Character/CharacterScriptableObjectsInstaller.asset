@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff622f396815e349b595b0ec09af1e9, type: 3}
+  m_Name: CharacterScriptableObjectsInstaller
+  m_EditorClassIdentifier: 
+  _configs:
+  - {fileID: 11400000, guid: 72fc0d97a706d35449cdc81e56191d39, type: 2}
+  - {fileID: 11400000, guid: de7f4243e7b84ba44b0d648531f0c7b4, type: 2}
+  - {fileID: 11400000, guid: cd2bf9e15356bf94d8a5e1003dfb3d5c, type: 2}

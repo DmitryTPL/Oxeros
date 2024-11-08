@@ -1,570 +1,636 @@
 {
-    "StateEnum": {
-        "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateMachine",
-        "Attributes": [],
-        "DataType": "enum",
-        "Type": "$NAME$State",
-        "Inheritances": [],
-        "Constraints": [],
-        "Content": [
-            "Idle"
-        ]
-    },
-    "PersistentData": {
-        "Usings": [
-            "System",
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$PersistentData",
-        "Inheritances": [
-            "IPersistentData"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public Guid Guid { get; set; }"
-        ]
-    },
-    "PerUpdateData": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$PerUpdateData",
-        "Inheritances": [
-            "IPerUpdateData"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StateMachine": {
-        "Usings": [
-            "System.Collections.Generic",
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$StateMachine",
-        "Inheritances": [
-            "BaseStateMachine<I$NAME$State, $NAME$State>",
-            "I$NAME$StateMachine"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public $NAME$StateMachine(List<I$NAME$State> states) : base(states)",
-            "{",
-            "}"
-        ]
-    },
-    "IStateMachine": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$StateMachine",
-        "Inheritances": [
-            "IStateMachine<$NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "State": {
-        "Usings": [
-            "StateMachine",
-            "Zenject"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/States",
-        "Attributes": [],
-        "DataType": "abstract class",
-        "Type": "Base$NAME$State",
-        "Inheritances": [
-            "BaseStateWithTransitions<$NAME$State, $NAME$Transition, I$NAME$Transition, I$NAME$TransitionsHolder, I$NAME$StateTimingHandler, $NAME$StateTimeConfig, $NAME$StateToTimeDictionary, $NAME$StateResult>",
-            "I$NAME$State"
-        ],
-        "Constraints": [],
-        "Content": [
-            "protected $NAME$Config Config { get; private set; }",
-            "",
-            "[Inject]",
-            "public void AddDependencies($NAME$Config config)",
-            "{",
-            "    Config = config;",
-            "}"
-        ]
-    },
-    "IState": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/States",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$State",
-        "Inheritances": [
-            "IState<$NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "IdleState": {
-        "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/States",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "Idle$NAME$State",
-        "Inheritances": [
-            "Base$NAME$State"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public override $NAME$State State => $NAME$State.Idle;"
-        ]
-    },
-    "StateResult": {
-        "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$StateResult",
-        "Inheritances": [
-            "I$NAME$StateResult"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public void Reset()",
-            "{",
-            "}"
-        ]
-    },
-    "IStateResult": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$StateResult",
-        "Inheritances": [
-            "IStateResult"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StateTimingHandler": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$StateTimingHandler",
-        "Inheritances": [
-            "BaseStateTimingHandler<$NAME$State>",
-            "I$NAME$StateTimingHandler"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "IStateTimingHandler": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$StateTimingHandler",
-        "Inheritances": [
-            "IStateTimingHandler<$NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "Config": {
-        "Usings": [
-            "UnityEngine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
-        "Attributes": [
-            "CreateAssetMenu(fileName = \"$NAME$Config\", menuName = \"ScriptableObjects/$NAME$/$NAME$Config\", order = 0)"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$Config",
-        "Inheritances": [
-            "ScriptableObject"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StateTimeConfig": {
-        "Usings": [
-            "System",
-            "StateMachine",
-            "UnityEngine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
-        "Attributes": [
-            "Serializable",
-            "CreateAssetMenu(fileName = \"$NAME$StateTimeConfig\", menuName = \"ScriptableObjects/$NAME$/$NAME$StateTimeConfig\", order = 1)"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$StateTimeConfig",
-        "Inheritances": [
-            "BaseStateTimeConfig<$NAME$State, $NAME$StateToTimeDictionary>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StateToTimeDictionary": {
-        "Usings": [
-            "System"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$StateToTimeDictionary",
-        "Inheritances": [
-            "UnitySerializedDictionary<$NAME$State, float>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "Presenter": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Presenters/$NAME$",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$Presenter",
-        "Inheritances": [
-            "StatePresenterBase<I$NAME$StateResult, $NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "View": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Views/$NAME$",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$View",
-        "Inheritances": [
-            "StateViewBase<$NAME$Presenter, I$NAME$StateResult, $NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "Transition": {
-        "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateMachine",
-        "Attributes": [],
-        "DataType": "enum",
-        "Type": "$NAME$Transition",
-        "Inheritances": [],
-        "Constraints": [],
-        "Content": [
-            "Idle"
-        ]
-    },
-    "TransitionsActivityHandler": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$TransitionsActivityHandler",
-        "Inheritances": [
-            "BaseTransitionsActivityHandler<$NAME$State, $NAME$Transition>",
-            "I$NAME$TransitionsActivityHandler"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public $NAME$TransitionsActivityHandler($NAME$TransitionsConfig config)",
-            "    : base(config)",
-            "{",
-            "}"
-        ]
-    },
-    "ITransitionsActivityHandler": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$TransitionsActivityHandler",
-        "Inheritances": [
-            "ITransitionsActivityHandler<$NAME$Transition>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "TransitionsHolder": {
-        "Usings": [
-            "System",
-            "System.Collections.Generic",
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "$NAME$TransitionsHolder",
-        "Inheritances": [
-            "BaseTransitionsHolder<$NAME$State, $NAME$Transition, I$NAME$Transition>",
-            "I$NAME$TransitionsHolder"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public $NAME$TransitionsHolder(List<I$NAME$Transition> transitions, $NAME$TransitionsConfig transitionsConfig)",
-            "    : base(transitions, transitionsConfig)",
-            "{",
-            "}",
-            "",
-            "protected override bool CompareTransitions(Enum transition1, Enum transition2)",
-            "{",
-            "    return ($NAME$Transition)transition1 == ($NAME$Transition)transition2;",
-            "}"
-        ]
-    },
-    "ITransitionsHolder": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$TransitionsHolder",
-        "Inheritances": [
-            "ITransitionsHolder<$NAME$State, $NAME$Transition, I$NAME$Transition>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "BaseTransition": {
-        "Usings": [
-            "StateMachine",
-            "Zenject"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
-        "Attributes": [],
-        "DataType": "abstract class",
-        "Type": "Base$NAME$Transition",
-        "Inheritances": [
-            "BaseTransition<$NAME$State, $NAME$Transition>",
-            "I$NAME$Transition"
-        ],
-        "Constraints": [],
-        "Content": [
-            "[Inject]",
-            "public void AddDependencies(I$NAME$TransitionsActivityHandler abilitiesActivityHandler,",
-            "    $NAME$TransitionsConfig config, I$NAME$StateTimingHandler stateDelayHandler)",
-            "{",
-            "    Initialize(abilitiesActivityHandler, config, stateDelayHandler);",
-            "}"
-        ]
-    },
-    "ITransition": {
-        "Usings": [
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
-        "Attributes": [],
-        "DataType": "interface",
-        "Type": "I$NAME$Transition",
-        "Inheritances": [
-            "ITransition<$NAME$State, $NAME$Transition>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "IdleTransition": {
-        "Usings": [],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
-        "Attributes": [],
-        "DataType": "class",
-        "Type": "Idle$NAME$Transition",
-        "Inheritances": [
-            "Base$NAME$Transition"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public override $NAME$State MoveToState => $NAME$State.Idle;",
-            "public override $NAME$Transition Transition => $NAME$Transition.Idle;"
-        ]
-    },
-    "TransitionToStatesDictionary": {
-        "Usings": [
-            "System"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$TransitionToStatesDictionary",
-        "Inheritances": [
-            "UnitySerializedDictionary<$NAME$Transition, $NAME$StatesList>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StatesList": {
-        "Usings": [
-            "System",
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$StatesList",
-        "Inheritances": [
-            "BaseStatesList<$NAME$State>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "StateToTransitionsDictionary": {
-        "Usings": [
-            "System"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$StateToTransitionsDictionary",
-        "Inheritances": [
-            "UnitySerializedDictionary<$NAME$State, $NAME$TransitionsList>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "TransitionsList": {
-        "Usings": [
-            "System",
-            "StateMachine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$TransitionsList",
-        "Inheritances": [
-            "BaseTransitionsList<$NAME$Transition>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "TransitionActivity": {
-        "Usings": [
-            "System",
-            "StateMachine",
-            "UnityEngine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$TransitionActivity",
-        "Inheritances": [
-            "BaseTransitionActivity<$NAME$Transition>"
-        ],
-        "Constraints": [],
-        "Content": [
-            "#pragma warning disable CS0414",
-            "[Serializable]",
-            "public class Move : BaseTransitionActivityDescription",
-            "{",
-            "    [SerializeField] [Transition((int)$NAME$Transition.Idle)] private bool _idle = true;",
-            "}",
-            "",
-            "[SerializeField] private Move _move;",
-            "",
-            "protected override $NAME$Transition ConvertFromInt(int value)",
-            "{",
-            "    return ($NAME$Transition)value;",
-            "}",
-            "#pragma warning restore CS0414"
-        ]
-    },
-    "TransitionsConfig": {
-        "Usings": [
-            "StateMachine",
-            "UnityEngine"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
-        "Attributes": [
-            "CreateAssetMenu(fileName = \"$NAME$TransitionsConfig\", menuName = \"ScriptableObjects/$NAME$/$NAME$TransitionsConfig\", order = 2)"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$TransitionsConfig",
-        "Inheritances": [
-            "BaseTransitionsConfig<$NAME$State, $NAME$Transition, $NAME$TransitionActivity, $NAME$StatesList, $NAME$TransitionsList, $NAME$StateToTransitionsDictionary, $NAME$TransitionToStatesDictionary>"
-        ],
-        "Constraints": [],
-        "Content": []
-    },
-    "Install": {
-        "Usings": [
-            "System",
-            "Zenject"
-        ],
-        "RelativeDirectory": "Models/$NAME$/StateMachine/Install",
-        "Attributes": [
-            "Serializable"
-        ],
-        "DataType": "class",
-        "Type": "$NAME$Install",
-        "Inheritances": [
-            "MonoInstaller"
-        ],
-        "Constraints": [],
-        "Content": [
-            "public override void InstallBindings()",
-            "{",
-            "    Container.BindInstance(destroyCancellationToken).AsCached();",
-            "",
-            "    Container.BindInterfacesAndSelfTo<$NAME$Presenter>().AsSingle();",
-            "",
-            "    InstallStateMachine();",
-            "    InstallTransitions();",
-            "}",
-            "",
-            "private void InstallStateMachine()",
-            "{",
-            "    Container.BindInterfacesTo<$NAME$StateMachine>().AsSingle();",
-            "    Container.BindInterfacesTo<$NAME$StateTimingHandler>().AsSingle();",
-            "    Container.BindInterfacesTo<$NAME$StateResult>().AsSingle();",
-            "    Container.BindInterfacesTo<$NAME$PersistentData>().AsSingle();",
-            "    Container.BindInterfacesTo<$NAME$PerUpdateData>().AsSingle();",
-            "",
-            "    Container.BindInterfacesTo<Idle$NAME$State>().AsSingle();",
-            "}",
-            "",
-            "private void InstallTransitions()",
-            "{",
-            "    Container.BindInterfacesTo<$NAME$TransitionsActivityHandler>().AsSingle();",
-            "    Container.BindInterfacesTo<$NAME$TransitionsHolder>().AsSingle();",
-            "",
-            "    Container.BindInterfacesTo<Idle$NAME$Transition>().AsSingle();",
-            "}"
-        ]
-    }
+  "State": {
+    "Usings": [],
+    "RelativeDirectory": "SharedDataTypes/$NAME$/StateMachine",
+    "Attributes": [],
+    "DataType": "enum",
+    "Type": "$NAME$State",
+    "Inheritances": [],
+    "Constraints": [],
+    "Content": [
+      "Idle"
+    ]
+  },
+  "PersistentData": {
+    "Usings": [
+      "System"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$PersistentData",
+    "Inheritances": [
+      "I$NAME$PersistentData"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public Guid Guid { get; set; }"
+    ]
+  },
+  "IPersistentData": {
+    "Usings": [
+      "System",
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$PersistentData",
+    "Inheritances": [
+      "IPersistentData"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public Guid Guid { get; set; }"
+    ]
+  },
+  "PerUpdateData": {
+    "Usings": [],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$PerUpdateData",
+    "Inheritances": [
+      "I$NAME$PerUpdateData"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "IPerUpdateData": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Data",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$PerUpdateData",
+    "Inheritances": [
+      "IPerUpdateData"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "SharedData": {
+    "Usings": [
+      "Cysharp.Threading.Tasks"
+    ],
+    "RelativeDirectory": "SharedDataTypes/$NAME$/StateMachine",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$SharedData",
+    "Inheritances": [
+      "I$NAME$SharedData"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public AsyncReactiveProperty<$NAME$State> CurrentState { get; set; } = new(default);"
+    ]
+  },
+  "ISharedData": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "SharedDataTypes/$NAME$/StateMachine",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$SharedData",
+    "Inheritances": [
+      "ISharedData<$NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateMachine": {
+    "Usings": [
+      "System.Collections.Generic",
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$StateMachine",
+    "Inheritances": [
+      "BaseStateMachine<I$NAME$State, $NAME$State>",
+      "I$NAME$StateMachine"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public $NAME$StateMachine(List<I$NAME$State> states) : base(states)",
+      "{",
+      "}"
+    ]
+  },
+  "IStateMachine": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$StateMachine",
+    "Inheritances": [
+      "IStateMachine<$NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "BaseState": {
+    "Usings": [
+      "StateMachine",
+      "Zenject"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/States",
+    "Attributes": [],
+    "DataType": "abstract class",
+    "Type": "Base$NAME$State",
+    "Inheritances": [
+      "BaseStateWithTransitions<$NAME$State, $NAME$Transition, I$NAME$Transition, I$NAME$TransitionsHolder, I$NAME$StateTimingHandler, $NAME$StateTimeConfig, $NAME$StateToTimeDictionary, I$NAME$StateResult>",
+      "I$NAME$State"
+    ],
+    "Constraints": [],
+    "Content": [
+      "protected $NAME$Config Config { get; private set; }",
+      "protected IPersistentData PersistentData { get; private set; }",
+      "protected IPerUpdateData PerUpdateData { get; private set; }",
+      "",
+      "[Inject]",
+      "public void AddDependencies($NAME$Config config, I$NAME$PersistentData persistentData, I$NAME$PerUpdateData perUpdateData)",
+      "{",
+      "    Config = config;",
+      "    PersistentData = persistentData;",
+      "    PerUpdateData = perUpdateData;",
+      "}"
+    ]
+  },
+  "IState": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/States",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$State",
+    "Inheritances": [
+      "IState<$NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "IdleState": {
+    "Usings": [],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/States",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "Idle$NAME$State",
+    "Inheritances": [
+      "Base$NAME$State"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public override $NAME$State State => $NAME$State.Idle;"
+    ]
+  },
+  "StateResult": {
+    "Usings": [],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$StateResult",
+    "Inheritances": [
+      "I$NAME$StateResult"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public void Reset()",
+      "{",
+      "}"
+    ]
+  },
+  "IStateResult": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "SharedDataTypes/$NAME$/StateMachine",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$StateResult",
+    "Inheritances": [
+      "IStateResult"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateTimingHandler": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$StateTimingHandler",
+    "Inheritances": [
+      "BaseStateTimingHandler<$NAME$State>",
+      "I$NAME$StateTimingHandler"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "IStateTimingHandler": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$StateTimingHandler",
+    "Inheritances": [
+      "IStateTimingHandler<$NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "Config": {
+    "Usings": [
+      "UnityEngine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
+    "Attributes": [
+      "CreateAssetMenu(fileName = \"$NAME$Config\", menuName = \"ScriptableObjects/$NAME$/$NAME$Config\", order = 0)"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$Config",
+    "Inheritances": [
+      "ScriptableObject"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateTimeConfig": {
+    "Usings": [
+      "System",
+      "StateMachine",
+      "UnityEngine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
+    "Attributes": [
+      "Serializable",
+      "CreateAssetMenu(fileName = \"$NAME$StateTimeConfig\", menuName = \"ScriptableObjects/$NAME$/$NAME$StateTimeConfig\", order = 1)"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$StateTimeConfig",
+    "Inheritances": [
+      "BaseStateTimeConfig<$NAME$State, $NAME$StateToTimeDictionary>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateToTimeDictionary": {
+    "Usings": [
+      "System"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
+    "Attributes": [
+      "Serializable",
+      "AYellowpaper.SerializedCollections"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$StateToTimeDictionary",
+    "Inheritances": [
+      "SerializedDictionary<$NAME$State, float>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "Presenter": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Presenters/$NAME$",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$Presenter",
+    "Inheritances": [
+      "StatePresenterBase<I$NAME$StateResult, $NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "View": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Views/$NAME$",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$View",
+    "Inheritances": [
+      "StateViewBase<$NAME$Presenter, I$NAME$StateResult, $NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "Transition": {
+    "Usings": [],
+    "RelativeDirectory": "Models/$NAME$/StateMachine",
+    "Attributes": [],
+    "DataType": "enum",
+    "Type": "$NAME$Transition",
+    "Inheritances": [],
+    "Constraints": [],
+    "Content": [
+      "Idle"
+    ]
+  },
+  "TransitionsActivityHandler": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$TransitionsActivityHandler",
+    "Inheritances": [
+      "BaseTransitionsActivityHandler<$NAME$State, $NAME$Transition>",
+      "I$NAME$TransitionsActivityHandler"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public $NAME$TransitionsActivityHandler($NAME$TransitionsConfig config)",
+      "    : base(config)",
+      "{",
+      "}"
+    ]
+  },
+  "ITransitionsActivityHandler": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$TransitionsActivityHandler",
+    "Inheritances": [
+      "ITransitionsActivityHandler<$NAME$Transition>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "TransitionsHolder": {
+    "Usings": [
+      "System",
+      "System.Collections.Generic",
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$TransitionsHolder",
+    "Inheritances": [
+      "BaseTransitionsHolder<$NAME$State, $NAME$Transition, I$NAME$Transition>",
+      "I$NAME$TransitionsHolder"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public $NAME$TransitionsHolder(List<I$NAME$Transition> transitions, $NAME$TransitionsConfig transitionsConfig)",
+      "    : base(transitions, transitionsConfig)",
+      "{",
+      "}",
+      "",
+      "protected override bool CompareTransitions(Enum transition1, Enum transition2)",
+      "{",
+      "    return ($NAME$Transition)transition1 == ($NAME$Transition)transition2;",
+      "}"
+    ]
+  },
+  "ITransitionsHolder": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$TransitionsHolder",
+    "Inheritances": [
+      "ITransitionsHolder<$NAME$State, $NAME$Transition, I$NAME$Transition>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "BaseTransition": {
+    "Usings": [
+      "StateMachine",
+      "Zenject"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
+    "Attributes": [],
+    "DataType": "abstract class",
+    "Type": "Base$NAME$Transition",
+    "Inheritances": [
+      "BaseTransition<$NAME$State, $NAME$Transition>",
+      "I$NAME$Transition"
+    ],
+    "Constraints": [],
+    "Content": [
+      "[Inject]",
+      "public void AddDependencies(I$NAME$TransitionsActivityHandler abilitiesActivityHandler,",
+      "    $NAME$TransitionsConfig config, I$NAME$StateTimingHandler stateDelayHandler)",
+      "{",
+      "    Initialize(abilitiesActivityHandler, config, stateDelayHandler);",
+      "}"
+    ]
+  },
+  "ITransition": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
+    "Attributes": [],
+    "DataType": "interface",
+    "Type": "I$NAME$Transition",
+    "Inheritances": [
+      "ITransition<$NAME$State, $NAME$Transition>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "IdleTransition": {
+    "Usings": [],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Transitions",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "Idle$NAME$Transition",
+    "Inheritances": [
+      "Base$NAME$Transition"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public override $NAME$State MoveToState => $NAME$State.Idle;",
+      "public override $NAME$Transition Transition => $NAME$Transition.Idle;"
+    ]
+  },
+  "TransitionToStatesDictionary": {
+    "Usings": [
+      "System",
+      "AYellowpaper.SerializedCollections"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$TransitionToStatesDictionary",
+    "Inheritances": [
+      "SerializedDictionary<$NAME$Transition, $NAME$StatesList>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StatesList": {
+    "Usings": [
+      "System",
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$StatesList",
+    "Inheritances": [
+      "BaseStatesList<$NAME$State>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateToTransitionsDictionary": {
+    "Usings": [
+      "System",
+      "AYellowpaper.SerializedCollections"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$StateToTransitionsDictionary",
+    "Inheritances": [
+      "SerializedDictionary<$NAME$State, $NAME$TransitionsList>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "TransitionsList": {
+    "Usings": [
+      "System",
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$TransitionsList",
+    "Inheritances": [
+      "BaseTransitionsList<$NAME$Transition>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "TransitionActivity": {
+    "Usings": [
+      "System",
+      "StateMachine",
+      "UnityEngine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$TransitionActivity",
+    "Inheritances": [
+      "BaseTransitionActivity<$NAME$Transition>"
+    ],
+    "Constraints": [],
+    "Content": [
+      "#pragma warning disable CS0414",
+      "[Serializable]",
+      "public class Move : BaseTransitionActivityDescription",
+      "{",
+      "    [SerializeField] [Transition((int)$NAME$Transition.Idle)] private bool _idle = true;",
+      "}",
+      "",
+      "[SerializeField] private Move _move;",
+      "",
+      "protected override $NAME$Transition ConvertFromInt(int value)",
+      "{",
+      "    return ($NAME$Transition)value;",
+      "}",
+      "#pragma warning restore CS0414"
+    ]
+  },
+  "TransitionsConfig": {
+    "Usings": [
+      "StateMachine",
+      "UnityEngine"
+    ],
+    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
+    "Attributes": [
+      "CreateAssetMenu(fileName = \"$NAME$TransitionsConfig\", menuName = \"ScriptableObjects/$NAME$/$NAME$TransitionsConfig\", order = 2)"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$TransitionsConfig",
+    "Inheritances": [
+      "BaseTransitionsConfig<$NAME$State, $NAME$Transition, $NAME$TransitionActivity, $NAME$StatesList, $NAME$TransitionsList, $NAME$StateToTransitionsDictionary, $NAME$TransitionToStatesDictionary>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "Install": {
+    "Usings": [
+      "System",
+      "Zenject"
+    ],
+    "RelativeDirectory": "Installers/$NAME$/StateMachine",
+    "Attributes": [
+      "Serializable"
+    ],
+    "DataType": "class",
+    "Type": "$NAME$Installer",
+    "Inheritances": [
+      "MonoInstaller"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public override void InstallBindings()",
+      "{",
+      "    Container.BindInstance(destroyCancellationToken).AsCached();",
+      "",
+      "    Container.BindInterfacesAndSelfTo<$NAME$Presenter>().AsSingle();",
+      "",
+      "    InstallStateMachine();",
+      "    InstallTransitions();",
+      "}",
+      "",
+      "private void InstallStateMachine()",
+      "{",
+      "    Container.BindInterfacesTo<$NAME$StateMachine>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$StateTimingHandler>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$StateResult>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$PersistentData>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$PerUpdateData>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$SharedData>().AsSingle();",
+      "",
+      "    Container.BindInterfacesTo<Idle$NAME$State>().AsSingle();",
+      "}",
+      "",
+      "private void InstallTransitions()",
+      "{",
+      "    Container.BindInterfacesTo<$NAME$TransitionsActivityHandler>().AsSingle();",
+      "    Container.BindInterfacesTo<$NAME$TransitionsHolder>().AsSingle();",
+      "",
+      "    Container.BindInterfacesTo<Idle$NAME$Transition>().AsSingle();",
+      "}"
+    ]
+  }
 }

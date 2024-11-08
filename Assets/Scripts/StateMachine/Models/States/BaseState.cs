@@ -9,14 +9,12 @@ namespace StateMachine
     {
         public abstract TStateType State { get; }
 
-        protected IPersistentData PersistentData { get; private set; }
-        protected IPerUpdateData PerUpdateData { get; private set; }
+        
 
         [Inject]
         private void AddDependencies(IPersistentData persistentData, IPerUpdateData perUpdateData)
         {
-            PersistentData = persistentData;
-            PerUpdateData = perUpdateData;
+            
         }
 
         public virtual UniTask Enter()

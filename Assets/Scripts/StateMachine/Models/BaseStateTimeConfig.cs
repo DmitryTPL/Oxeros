@@ -1,13 +1,14 @@
 using System;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 namespace StateMachine
 {
     public abstract class BaseStateTimeConfig<TStateType, TStateToTimeDictionary> : ScriptableObject
         where TStateType : Enum
-        where TStateToTimeDictionary : UnitySerializedDictionary<TStateType, float>
+        where TStateToTimeDictionary : SerializedDictionary<TStateType, float>
     {
-        [SerializeField] private TStateToTimeDictionary _stateTime;
+        [SerializeField, SerializedDictionary("State", "Time")] private TStateToTimeDictionary _stateTime;
 
         public float GetDelay(TStateType state)
         {

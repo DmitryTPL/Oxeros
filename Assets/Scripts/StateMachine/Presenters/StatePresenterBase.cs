@@ -10,12 +10,13 @@ namespace StateMachine
         where TStateResult : IStateResult
         where TStateType : Enum
     {
-        protected TStateResult _stateResult;
-        protected IStateMachine<TStateType> _stateMachine;
-        protected IPersistentData _persistentData;
-        protected AsyncReactiveProperty<TStateResult> _stateResultChanged;
-        protected readonly AsyncReactiveProperty<TStateType> _stateChanged = new(default);
-        protected ISharedData<TStateType> _sharedData;
+        private AsyncReactiveProperty<TStateResult> _stateResultChanged;
+        private readonly AsyncReactiveProperty<TStateType> _stateChanged = new(default);
+        
+        protected TStateResult StateResult { get; private set; }
+        protected IStateMachine<TStateType> StateMachine { get; private set; }
+        protected IPersistentData PersistentData { get; private set; }
+        protected ISharedData<TStateType> SharedData { get; private set; }
 
         public IReadOnlyAsyncReactiveProperty<TStateResult> StateResultChanged => _stateResultChanged;
         public IReadOnlyAsyncReactiveProperty<TStateType> StateChanged => _stateChanged;
@@ -24,18 +25,19 @@ namespace StateMachine
         protected void AddDependencies(TStateResult stateResult, IStateMachine<TStateType> stateMachine, IPersistentData persistentData,
             ISharedData<TStateType> sharedData)
         {
-            _stateResult = stateResult;
-            _stateMachine = stateMachine;
-            _stateResultChanged = new AsyncReactiveProperty<TStateResult>(_stateResult);
-            _persistentData = persistentData;
-            _sharedData = sharedData;
+            StateResult = stateResult;
+            StateMachine = stateMachine;
+            PersistentData = persistentData;
+            SharedData = sharedData;
+
+            _stateResultChanged = new AsyncReactiveProperty<TStateResult>(StateResult);
 
             stateMachine.CurrentState.WithoutCurrent().ForEachAsync(OnStateChanged, DestroyCancellationToken).Forget();
         }
 
         protected override void InitializeData()
         {
-            _persistentData.Guid = Guid;
+            PersistentData.Guid = Guid;
         }
 
         protected void UpdateState()
@@ -47,21 +49,21 @@ namespace StateMachine
 
             PreStateUpdate();
 
-            _stateMachine.Execute();
+            StateMachine.Execute();
 
             PostStateUpdate();
         }
 
         protected virtual void PreStateUpdate()
         {
-            _stateResult.Reset();
+            StateResult.Reset();
         }
 
         protected virtual void PostStateUpdate()
         {
-            ApplyStateDataChanges(_stateResult);
+            ApplyStateDataChanges(StateResult);
 
-            _stateResultChanged.Value = _stateResult;
+            _stateResultChanged.Value = StateResult;
         }
 
         protected virtual void ApplyStateDataChanges(TStateResult stateResult)
@@ -70,8 +72,8 @@ namespace StateMachine
 
         private void OnStateChanged(TStateType nextState)
         {
-            _sharedData.CurrentState.Value = nextState;
-            
+            SharedData.CurrentState.Value = nextState;
+
             _stateChanged.Value = nextState;
         }
     }

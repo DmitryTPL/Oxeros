@@ -1,4 +1,5 @@
 using System;
+using AYellowpaper.SerializedCollections;
 using Cysharp.Threading.Tasks;
 using Zenject;
 
@@ -12,7 +13,7 @@ namespace StateMachine
         where TTransitionsHolder : ITransitionsHolder<TStateType, TTransitionType, TTransition>
         where TStateTimingHandler : IStateTimingHandler<TStateType>
         where TStateTimingConfig : BaseStateTimeConfig<TStateType, TStateToDelayDictionary>
-        where TStateToDelayDictionary : UnitySerializedDictionary<TStateType, float>
+        where TStateToDelayDictionary : SerializedDictionary<TStateType, float>
         where TStateResult : IStateResult
     {
         private TTransitionsHolder _transitionsHolder;

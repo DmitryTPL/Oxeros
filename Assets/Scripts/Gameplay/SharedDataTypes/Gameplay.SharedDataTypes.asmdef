@@ -1,0 +1,19 @@
+{
+    "name": "Gameplay.SharedDataTypes",
+    "rootNamespace": "Gameplay",
+    "references": [
+        "GUID:f4f1f2ac873cf2643bfc671028efaf29",
+        "GUID:eba637df3e7c7ee40948ec6a00331bfd",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:5c01796d064528144a599661eaab93a6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
