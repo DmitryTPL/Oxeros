@@ -33,7 +33,7 @@ namespace StateMachine
         [SerializeField] private TTransitionActivity _transitionsActivity;
         [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _states;
         [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _stateInterruptedByTransitions;
-        [SerializeField, HideInInspector] private TTransitionToStateDictionary _transitions;
+        [SerializeField, SerializedDictionary("Transition", "State"), HideInInspector] private TTransitionToStateDictionary _transitions;
 
         [SerializeField] private List<TStateType> _statesForAdd;
         [SerializeField] private TTransitionType _transitionForAdd;

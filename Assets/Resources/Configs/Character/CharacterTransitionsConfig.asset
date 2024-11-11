@@ -27,7 +27,13 @@ MonoBehaviour:
   _stateInterruptedByTransitions:
     _serializedList: []
   _transitions:
-    _serializedList: []
+    _serializedList:
+    - Key: 1
+      Value:
+        _usedInStates: 00000000
+    - Key: 0
+      Value:
+        _usedInStates: 01000000
   _statesForAdd: 
   _transitionForAdd: 0
   _transitionForRemove: 0

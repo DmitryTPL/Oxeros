@@ -14,6 +14,8 @@ namespace Gameplay
             [SerializeField] private Rigidbody _rigidbody;
 
             public Vector3 LinearVelocity => _rigidbody.linearVelocity;
+            public Vector3 AngularVelocity => _rigidbody.angularVelocity;
+            public Quaternion Rotation => _rigidbody.transform.rotation;
         }
         
         private readonly ICharacterPerUpdateData _perUpdateData;
@@ -37,6 +39,8 @@ namespace Gameplay
         protected override void PreStateUpdate()
         {
             _perUpdateData.LinearVelocity = _data.LinearVelocity;
+            _perUpdateData.AngularVelocity = _data.AngularVelocity;
+            _perUpdateData.Rotation = _data.Rotation;
         }
 
         public void FixedTick()

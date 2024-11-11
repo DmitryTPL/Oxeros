@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class MoveStateReactionView : View<MoveStateReactionPresenter>
+    public class MoveStateReactionView : View<MoveReactionPresenter>
     {
         [SerializeField] private Rigidbody _rigidbody;
 

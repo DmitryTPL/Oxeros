@@ -34,20 +34,23 @@ namespace StateMachine
 
         public async UniTask Execute()
         {
+            TStateType nextState;
+
             if (_isEnterStateScheduled)
             {
                 PreviousState = _currentState.Value;
 
                 await EnterState(_scheduledState);
-            }
-
-            var nextState = await _states[_currentState.Value].Execute();
-
-            if (_isEnterStateScheduled)
-            {
+                
+                nextState = await _states[_scheduledState].Execute();
+                
                 _currentState.Value = _scheduledState;
 
                 _isEnterStateScheduled = false;
+            }
+            else
+            {
+                nextState = await _states[_currentState.Value].Execute();
             }
 
             await TryTransitionToState(nextState);

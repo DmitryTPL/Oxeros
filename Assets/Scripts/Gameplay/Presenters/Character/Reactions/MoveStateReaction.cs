@@ -6,22 +6,22 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class MoveStateReactionPresenter : Presenter
+    public class MoveReactionPresenter : Presenter
     {
-        private readonly IMoveStateReaction _stateReaction;
+        private readonly IMoveReaction _reaction;
 
         private readonly AsyncReactiveProperty<Vector3> _accelerationChanged = new(default);
 
         public IReadOnlyAsyncReactiveProperty<Vector3> AccelerationChanged => _accelerationChanged;
 
-        public MoveStateReactionPresenter()
+        public MoveReactionPresenter()
         {
         }
 
         [Inject]
-        public MoveStateReactionPresenter(IMoveStateReaction stateReaction)
+        public MoveReactionPresenter(IMoveReaction moveReaction)
         {
-            stateReaction.Acceleration.WithoutCurrent().ForEachAsync(value => _accelerationChanged.Value = value, DestroyCancellationToken).Forget();
+            moveReaction.Acceleration.WithoutCurrent().ForEachAsync(value => _accelerationChanged.Value = value, DestroyCancellationToken).Forget();
         }
     }
 }

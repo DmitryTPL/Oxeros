@@ -5,11 +5,11 @@ namespace Gameplay
 {
     public interface IGravityForceReaction
     {
-        AsyncReactiveProperty<Vector3> GravityForce { get; set; }
+        AsyncReactiveProperty<Vector3> GravityForce { get; }
     }
 
     public class GravityForceReaction : IGravityForceReaction
     {
-        public AsyncReactiveProperty<Vector3> GravityForce { get; set; } = new(default);
+        public AsyncReactiveProperty<Vector3> GravityForce { get; } = new(default);
     }
 }

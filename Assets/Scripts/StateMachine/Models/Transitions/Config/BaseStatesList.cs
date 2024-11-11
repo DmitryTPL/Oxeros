@@ -8,7 +8,7 @@ namespace StateMachine
     public abstract class BaseStatesList<TStateType>
         where TStateType : Enum
     {
-        [SerializeField] private List<TStateType> _usedInStates;
+        [SerializeField] private List<TStateType> _usedInStates = new();
 
         public List<TStateType> UsedInStates
         {

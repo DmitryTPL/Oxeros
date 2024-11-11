@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6016645778133475951}
   - {fileID: 6994090305568598463}
+  - {fileID: 4126285762418023378}
   m_Father: {fileID: 5683716296004737907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2169926505511570416
@@ -49,6 +50,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 6629283180538144734}
   - {fileID: 7580481123820489033}
+  - {fileID: 5470479975608122665}
 --- !u!1 &972577459543760337
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +158,65 @@ Transform:
   - {fileID: 2980528945206542511}
   m_Father: {fileID: 5683716296004737907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1888384208976371246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4126285762418023378}
+  - component: {fileID: 5422116224137269661}
+  - component: {fileID: 5470479975608122665}
+  m_Layer: 0
+  m_Name: Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4126285762418023378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888384208976371246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3868740458205085853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5422116224137269661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888384208976371246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115d1bacb1944c5cb796a9a4e35a2083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c1cb7d21-efda-4226-8dab-a73a3bdbdafb
+  _rigidbody: {fileID: 1788247181204230958}
+--- !u!114 &5470479975608122665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888384208976371246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827d34d7bd644c86bfcdf7f0a02a396b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955944761991491265
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31db0ea4bb3d400e8e72336595bfc2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 9f4af2dd-1e7d-4579-9564-a5231135efe9
+  _guid: 13d33b1d-ff39-4492-bbe7-fc3d9d40a4b9
   _rigidbody: {fileID: 1788247181204230958}
 --- !u!114 &6629283180538144734
 MonoBehaviour:
@@ -260,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd4870a0ed541a2b7ad1c982e9e0d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 81db47f7-5123-4d5b-bb6b-c7d50590ed6e
+  _guid: d78e3117-4dc9-46d8-8378-2065480348fa
   _data:
     _action: {fileID: -1680190386980627800, guid: 289c1b55c9541489481df5cc06664110, type: 3}
 --- !u!114 &4978643926053271418
@@ -422,10 +483,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fc615ed311d6546a8ec4cadd4e8687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: b59f323c-c338-4fc9-afaf-0494b9e4f361
+  _guid: 1c6223a5-a976-4a4c-8f5b-0b459d766753
   _states:
   - name: 
     _state: 0
+    _data:
+      _layer: 0
+      _signalToLayer: 
+      _transitions: []
+  - name: 
+    _state: 1
     _data:
       _layer: 0
       _signalToLayer: 
@@ -578,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d329399c1e892141af89ef9185f60dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 3fd51f56-f946-444a-b20e-ff2d882d89f2
+  _guid: 7e46f1ad-d606-4a76-9b64-7eab485ea27d
   _currentState: 0
   _data:
     _rigidbody: {fileID: 1788247181204230958}
