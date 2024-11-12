@@ -30,6 +30,6 @@ public class GenerateStateMachineWindow : BaseCodeGenWindow
             CreateScript(directory.FullName, template.Value);
         }
 
-        Debug.Log("Created");
+        Debug.Log("State machine created");
     }
 }

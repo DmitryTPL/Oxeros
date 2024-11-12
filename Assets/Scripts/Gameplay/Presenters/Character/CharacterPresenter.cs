@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class CharacterPresenter : StatePresenterBase<ICharacterStateResult, CharacterState>, IFixedTickable
+    public class CharacterPresenter : StatePresenterBase<CharacterState>, IFixedTickable
     {
         [Serializable]
         public class Data: PresenterViewSharedData

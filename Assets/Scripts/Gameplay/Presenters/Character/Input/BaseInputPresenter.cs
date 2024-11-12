@@ -2,22 +2,25 @@
 using MVP;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Gameplay
 {
-    public abstract class BaseInputPresenter : Presenter
+    [Serializable]
+    public class InputPresenterViewSharedData : PresenterViewSharedData
     {
-        [Serializable]
-        public class Data : PresenterViewSharedData
-        {
-            [SerializeField] private InputActionReference _action;
+        [SerializeField] private InputActionReference _action;
 
-            public InputActionReference Action => _action;
-        }
+        public InputActionReference Action => _action;
+    }
 
-        private readonly IInputData _inputData;
+    public abstract class BaseInputPresenter<TInputData> : Presenter
+        where TInputData : class, IInputData
+    {
+        private IInputData _inputData;
 
-        protected BaseInputPresenter(IInputData inputData)
+        [Inject]
+        public void AddDependencies(TInputData inputData)
         {
             _inputData = inputData;
         }
@@ -26,7 +29,7 @@ namespace Gameplay
         {
             if (_inputData != null)
             {
-                _inputData.InputAction = GetSharedData<Data>().Action.ToInputAction();
+                _inputData.InputAction = GetSharedData<InputPresenterViewSharedData>().Action.ToInputAction();
             }
         }
     }

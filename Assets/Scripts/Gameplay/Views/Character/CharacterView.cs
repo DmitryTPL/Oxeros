@@ -1,10 +1,9 @@
 using MVP;
-using StateMachine;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class CharacterView : StateViewBase<CharacterPresenter, ICharacterStateResult, CharacterState>
+    public class CharacterView : View<CharacterPresenter>
     {
         [SerializeField] private CharacterPresenter.Data _data;
 

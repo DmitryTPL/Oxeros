@@ -1,13 +1,6 @@
-﻿using Zenject;
-
-namespace Gameplay
+﻿namespace Gameplay
 {
-    public class AttackInputInstaller : MonoInstaller
+    public class AttackInputInstaller : BaseInputInstaller<DefenceInputData, DefenceInputPresenter>
     {
-        public override void InstallBindings()
-        {
-            Container.BindInterfacesTo<AttackInputData>().AsSingle();
-            Container.BindInterfacesAndSelfTo<AttackInputPresenter>().AsSingle();
-        }
     }
 }

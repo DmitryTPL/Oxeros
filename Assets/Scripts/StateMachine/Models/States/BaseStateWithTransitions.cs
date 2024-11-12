@@ -6,7 +6,7 @@ using Zenject;
 namespace StateMachine
 {
     public abstract class BaseStateWithTransitions<TStateType, TTransitionType, TTransition, TTransitionsHolder,
-        TStateTimingHandler, TStateTimingConfig, TStateToDelayDictionary, TStateResult> : BaseState<TStateType>
+        TStateTimingHandler, TStateTimingConfig, TStateToDelayDictionary> : BaseState<TStateType>
         where TStateType : Enum
         where TTransitionType : Enum
         where TTransition : ITransition<TStateType, TTransitionType>
@@ -14,23 +14,20 @@ namespace StateMachine
         where TStateTimingHandler : IStateTimingHandler<TStateType>
         where TStateTimingConfig : BaseStateTimeConfig<TStateType, TStateToDelayDictionary>
         where TStateToDelayDictionary : SerializedDictionary<TStateType, float>
-        where TStateResult : IStateResult
     {
         private TTransitionsHolder _transitionsHolder;
 
         protected TStateTimingHandler StateTimingHandler { get; private set; }
         protected TStateTimingConfig StateTimeConfig { get; private set; }
-        protected TStateResult StateResult { get; private set; }
 
         [Inject]
         public void AddDependenciesBase(TTransitionsHolder transitionsHolder, TStateTimingHandler stateTimingHandler,
-            TStateTimingConfig stateTimeConfig, TStateResult stateResult)
+            TStateTimingConfig stateTimeConfig)
         {
             _transitionsHolder = transitionsHolder;
 
             StateTimingHandler = stateTimingHandler;
             StateTimeConfig = stateTimeConfig;
-            StateResult = stateResult;
         }
 
         public override UniTask Enter()

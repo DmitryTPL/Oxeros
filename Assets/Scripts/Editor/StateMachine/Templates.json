@@ -144,7 +144,7 @@
     "DataType": "abstract class",
     "Type": "Base$NAME$State",
     "Inheritances": [
-      "BaseStateWithTransitions<$NAME$State, $NAME$Transition, I$NAME$Transition, I$NAME$TransitionsHolder, I$NAME$StateTimingHandler, $NAME$StateTimeConfig, $NAME$StateToTimeDictionary, I$NAME$StateResult>",
+      "BaseStateWithTransitions<$NAME$State, $NAME$Transition, I$NAME$Transition, I$NAME$TransitionsHolder, I$NAME$StateTimingHandler, $NAME$StateTimeConfig, $NAME$StateToTimeDictionary>",
       "I$NAME$State"
     ],
     "Constraints": [],
@@ -189,36 +189,6 @@
     "Content": [
       "public override $NAME$State State => $NAME$State.Idle;"
     ]
-  },
-  "StateResult": {
-    "Usings": [],
-    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/States",
-    "Attributes": [],
-    "DataType": "class",
-    "Type": "$NAME$StateResult",
-    "Inheritances": [
-      "I$NAME$StateResult"
-    ],
-    "Constraints": [],
-    "Content": [
-      "public void Reset()",
-      "{",
-      "}"
-    ]
-  },
-  "IStateResult": {
-    "Usings": [
-      "StateMachine"
-    ],
-    "RelativeDirectory": "SharedDataTypes/$NAME$/StateMachine",
-    "Attributes": [],
-    "DataType": "interface",
-    "Type": "I$NAME$StateResult",
-    "Inheritances": [
-      "IStateResult"
-    ],
-    "Constraints": [],
-    "Content": []
   },
   "StateTimingHandler": {
     "Usings": [
@@ -310,21 +280,59 @@
     "DataType": "class",
     "Type": "$NAME$Presenter",
     "Inheritances": [
-      "StatePresenterBase<I$NAME$StateResult, $NAME$State>"
+      "StatePresenterBase<$NAME$State>"
     ],
     "Constraints": [],
     "Content": []
   },
   "View": {
-    "Usings": [
-      "StateMachine"
+    "Usings": [      
+      "MVP"
     ],
     "RelativeDirectory": "Views/$NAME$",
     "Attributes": [],
     "DataType": "class",
     "Type": "$NAME$View",
     "Inheritances": [
-      "StateViewBase<$NAME$Presenter, I$NAME$StateResult, $NAME$State>"
+      "View<$NAME$Presenter>"
+    ],
+    "Constraints": [],
+    "Content": []
+  },
+  "StateChangeObserverPresenter": {
+    "Usings": [
+      "StateMachine",
+      "Cysharp.Threading.Tasks.Linq",
+      "Zenject"
+    ],
+    "RelativeDirectory": "Presenters/$NAME$",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$StateChangeObserverPresenter",
+    "Inheritances": [
+      "BaseStateChangeObserverPresenter"
+    ],
+    "Constraints": [],
+    "Content": [
+      "public $NAME$StateChangeObserverPresenter() { }",
+      "",
+      "[Inject]",
+      "public $NAME$StateChangeObserverPresenter(I$NAME$SharedData sharedData)",
+      "{",
+      "    sharedData.CurrentState.WithoutCurrent().ForEachAsync(s => _stateChanged.Value = s.ToString());",
+      "}"
+    ]
+  },
+  "StateChangeObserverView": {
+    "Usings": [
+      "StateMachine"
+    ],
+    "RelativeDirectory": "Views/$NAME$",
+    "Attributes": [],
+    "DataType": "class",
+    "Type": "$NAME$StateChangeObserverView",
+    "Inheritances": [
+      "BaseStateChangeObserverView<$NAME$StateChangeObserverPresenter>"
     ],
     "Constraints": [],
     "Content": []
@@ -548,7 +556,6 @@
       "{",
       "    Container.BindInterfacesTo<$NAME$StateMachine>().AsSingle();",
       "    Container.BindInterfacesTo<$NAME$StateTimingHandler>().AsSingle();",
-      "    Container.BindInterfacesTo<$NAME$StateResult>().AsSingle();",
       "    Container.BindInterfacesTo<$NAME$PersistentData>().AsSingle();",
       "    Container.BindInterfacesTo<$NAME$PerUpdateData>().AsSingle();",
       "    Container.BindInterfacesTo<$NAME$SharedData>().AsSingle();",

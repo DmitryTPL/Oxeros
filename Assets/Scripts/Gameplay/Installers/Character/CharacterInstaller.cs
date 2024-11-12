@@ -20,7 +20,6 @@ namespace Gameplay
         {
             Container.BindInterfacesTo<CharacterStateMachine>().AsSingle();
             Container.BindInterfacesTo<CharacterStateTimingHandler>().AsSingle();
-            Container.BindInterfacesTo<CharacterStateResult>().AsSingle();
             Container.BindInterfacesTo<CharacterPersistentData>().AsSingle();
             Container.BindInterfacesTo<CharacterPerUpdateData>().AsSingle();
             Container.BindInterfacesTo<CharacterSharedData>().AsSingle();

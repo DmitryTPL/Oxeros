@@ -1,18 +1,6 @@
-﻿using Zenject;
-
-namespace Gameplay
+﻿namespace Gameplay
 {
-    public class MoveInputPresenter : BaseInputPresenter
+    public class MoveInputPresenter : BaseInputPresenter<IMoveInputData>
     {
-        public MoveInputPresenter()
-            : base(null)
-        {
-        }
-
-        [Inject]
-        public MoveInputPresenter(IMoveInputData inputData)
-            : base(inputData)
-        {
-        }
     }
 }

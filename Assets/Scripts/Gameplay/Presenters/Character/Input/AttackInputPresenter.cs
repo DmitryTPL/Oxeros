@@ -1,18 +1,6 @@
-﻿using Zenject;
-
-namespace Gameplay
+﻿namespace Gameplay
 {
-    public class AttackInputPresenter : BaseInputPresenter
+    public class AttackInputPresenter : BaseInputPresenter<IAttackInputData>
     {
-        public AttackInputPresenter()
-            : base(null)
-        {
-        }
-
-        [Inject]
-        public AttackInputPresenter(IAttackInputData inputData)
-            : base(inputData)
-        {
-        }
     }
 }

@@ -1,13 +1,6 @@
-﻿using Zenject;
-
-namespace Gameplay
+﻿namespace Gameplay
 {
-    public class MoveInputInstaller : MonoInstaller
+    public class MoveInputInstaller : BaseInputInstaller<MoveInputData, MoveInputPresenter>
     {
-        public override void InstallBindings()
-        {
-            Container.BindInterfacesTo<MoveInputData>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MoveInputPresenter>().AsSingle();
-        }
     }
 }

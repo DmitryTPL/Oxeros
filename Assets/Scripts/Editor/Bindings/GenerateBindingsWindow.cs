@@ -69,6 +69,6 @@ public class GenerateBindingsWindow : BaseCodeGenWindow
             }
         }
 
-        Debug.Log("Created");
+        Debug.Log("Bindings created");
     }
 }

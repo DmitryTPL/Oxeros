@@ -7,7 +7,7 @@ using Zenject;
 namespace Gameplay
 {
     public abstract class BaseCharacterState : BaseStateWithTransitions<CharacterState, CharacterTransition, ICharacterTransition, ICharacterTransitionsHolder,
-        ICharacterStateTimingHandler, CharacterStateTimeConfig, CharacterStateToTimeDictionary, ICharacterStateResult>, ICharacterState
+        ICharacterStateTimingHandler, CharacterStateTimeConfig, CharacterStateToTimeDictionary>, ICharacterState
     {
         private static IMoveInputData _moveInputData;
         

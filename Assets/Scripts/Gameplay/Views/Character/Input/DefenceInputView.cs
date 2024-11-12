@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class AttackInputView : View<AttackInputPresenter>
+    public class DefenceInputView : View<DefenceInputPresenter>
     {
         [SerializeField] private InputPresenterViewSharedData _data;
 
