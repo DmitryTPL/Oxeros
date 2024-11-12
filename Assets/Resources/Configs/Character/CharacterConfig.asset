@@ -17,4 +17,4 @@ MonoBehaviour:
   _acceleration: 3
   _maxAcceleration: 3
   _rotationSpeed: 300
-  _rotationDamper: 0.25
+  _rotationDamper: 0.22

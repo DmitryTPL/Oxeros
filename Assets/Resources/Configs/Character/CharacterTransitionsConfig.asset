@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962a9a60fea7d2647aec70c80b28329b, type: 3}
   m_Name: CharacterTransitionsConfig
   m_EditorClassIdentifier: 
-  _transitionsActivity:
-    _move:
-      _idle: 1
-      _move: 1
   _states:
     _serializedList:
     - Key: 0
       Value:
-        _usedTransitions: 01000000
+        _usedTransitions: 0100000002000000
     - Key: 1
       Value:
-        _usedTransitions: 00000000
+        _usedTransitions: 0000000002000000
+    - Key: 2
+      Value:
+        _usedTransitions: 020000000000000001000000
   _stateInterruptedByTransitions:
     _serializedList: []
   _transitions:
     _serializedList:
     - Key: 1
       Value:
-        _usedInStates: 00000000
+        _usedInStates: 0000000002000000
+    - Key: 2
+      Value:
+        _usedInStates: 000000000100000002000000
     - Key: 0
       Value:
-        _usedInStates: 01000000
+        _usedInStates: 0100000002000000
   _statesForAdd: 
   _transitionForAdd: 0
   _transitionForRemove: 0

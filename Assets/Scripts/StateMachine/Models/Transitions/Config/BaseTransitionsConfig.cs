@@ -28,7 +28,7 @@ namespace StateMachine
         where TStateToTransitionsDictionary : SerializedDictionary<TStateType, TTransitionsList>
         where TTransitionToStateDictionary : SerializedDictionary<TTransitionType, TStatesList>
     {
-        [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _states;
+        [SerializeField, SerializedDictionary("State", "Transitions"), OnValueChanged("SyncTransitionsToStateCache")] private TStateToTransitionsDictionary _states;
         [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _stateInterruptedByTransitions;
         [SerializeField, SerializedDictionary("Transition", "State"), HideInInspector] private TTransitionToStateDictionary _transitions;
 
@@ -125,31 +125,6 @@ namespace StateMachine
                     _transitions[transition].UsedInStates.Add(state.Key);
                 }
             }
-
-            Debug.Log("Transitions toStateCache synchronized");
-
-            CheckTransitionForNonExistsState();
         }
-
-        #region CheckingOnInspector
-
-        private List<TTransitionType> _transitionsWithoutState = new();
-        private bool HasError => _transitionsWithoutState.Count > 0;
-        private string ErrorText => "Exit from state of this Transitions doesn't exists:\n" + string.Join(",", _transitionsWithoutState.Select(id => id.ToString()));
-
-        private void CheckTransitionForNonExistsState()
-        {
-            var transitions = _transitions.Keys.ToList();
-            var states = new HashSet<string>(_states.Keys.Select(item => item.ToString()));
-
-            _transitionsWithoutState.Clear();
-
-            foreach (var transition in transitions.Where(transition => !states.Contains(transition.ToString())))
-            {
-                _transitionsWithoutState.Add(transition);
-            }
-        }
-
-        #endregion
     }
 }

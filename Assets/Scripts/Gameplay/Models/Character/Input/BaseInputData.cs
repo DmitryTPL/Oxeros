@@ -7,7 +7,7 @@ namespace Gameplay
         InputAction InputAction { get; set; }
     }
 
-    public abstract class InputData : IInputData
+    public abstract class BaseInputData : IInputData
     {
         public InputAction InputAction { get; set; }
     }

@@ -7,7 +7,7 @@ namespace Gameplay
         public Vector3 Value { get; }
     }
 
-    public class MoveInputData : InputData, IMoveInputData
+    public class MoveInputData : BaseInputData, IMoveInputData
     {
         private readonly IMainCameraHolder _mainCameraHolder;
 

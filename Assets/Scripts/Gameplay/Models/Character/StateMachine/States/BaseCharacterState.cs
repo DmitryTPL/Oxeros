@@ -50,6 +50,9 @@ namespace Gameplay
         {
             if (IsRotationPaused)
             {
+                _rotateReaction.Rotation.Value = Vector3.zero;
+                _rotateReaction.Stop.Value = true;
+
                 return;
             }
             

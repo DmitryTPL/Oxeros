@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28215ef2c4594c4680a4e676ccfcb6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 74b0ef72-9f07-4197-bda4-23ca904410c6
+  _guid: 62c6bf34-ec25-4505-b18b-3a92136871e9
   _data:
     _camera: {fileID: 111804759}
 --- !u!1001 &122206172
@@ -17245,6 +17245,10 @@ PrefabInstance:
       propertyPath: _guid
       value: 70de19da-d3fc-40ff-b756-428c1e1afc78
       objectReference: {fileID: 0}
+    - target: {fileID: 1698331420743224586, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
+      propertyPath: _guid
+      value: 7591ea93-309a-4fb4-bb12-7119bedf5c98
+      objectReference: {fileID: 0}
     - target: {fileID: 3719581241905201728, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
       propertyPath: _guid
       value: 7d4c0320-099d-4faf-843e-d066d202e843
@@ -17300,22 +17304,6 @@ PrefabInstance:
     - target: {fileID: 6909720436965586134, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.542
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353643712433937075, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
-      propertyPath: _guid
-      value: 0f863105-fa82-4aa3-94a0-5abf956291c2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353643712433937075, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
-      propertyPath: _states.Array.data[0]._data._transitions.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353643712433937075, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
-      propertyPath: _states.Array.data[1]._data._transitions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353643712433937075, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
-      propertyPath: _states.Array.data[0]._data._transitions.Array.data[0]._to
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
