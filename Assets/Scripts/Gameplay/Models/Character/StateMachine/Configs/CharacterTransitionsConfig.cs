@@ -8,7 +8,6 @@ namespace Gameplay
         BaseTransitionsConfig<
             CharacterState,
             CharacterTransition,
-            CharacterTransitionActivity,
             CharacterStatesList,
             CharacterTransitionsList,
             CharacterStateToTransitionsDictionary,

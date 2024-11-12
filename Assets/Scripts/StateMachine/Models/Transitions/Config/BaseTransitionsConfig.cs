@@ -13,24 +13,21 @@ namespace StateMachine
     {
         IEnumerable<TTransitionType> GetTransitions(TStateType state);
         bool ContainsState(TStateType state);
-        IEnumerable<TTransitionType> GetActiveTransitions();
         bool ContainsTransition(TTransitionType transition);
         List<TStateType> GetStatesForTransition(TTransitionType transition);
         bool CanTransitionInterruptStateTiming(TStateType currentState, TTransitionType interruptingTransition);
     }
 
-    public abstract class BaseTransitionsConfig<TStateType, TTransitionType, TTransitionActivity, TStatesList, TTransitionsList, TStateToTransitionsDictionary,
+    public abstract class BaseTransitionsConfig<TStateType, TTransitionType, TStatesList, TTransitionsList, TStateToTransitionsDictionary,
         TTransitionToStateDictionary> :
         ScriptableObject, ITransitionsConfig<TStateType, TTransitionType>
         where TStateType : Enum
         where TTransitionType : Enum
-        where TTransitionActivity : ITransitionActivity<TTransitionType>
         where TStatesList : BaseStatesList<TStateType>, new()
         where TTransitionsList : BaseTransitionsList<TTransitionType>, new()
         where TStateToTransitionsDictionary : SerializedDictionary<TStateType, TTransitionsList>
         where TTransitionToStateDictionary : SerializedDictionary<TTransitionType, TStatesList>
     {
-        [SerializeField] private TTransitionActivity _transitionsActivity;
         [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _states;
         [SerializeField, SerializedDictionary("State", "Transitions")] private TStateToTransitionsDictionary _stateInterruptedByTransitions;
         [SerializeField, SerializedDictionary("Transition", "State"), HideInInspector] private TTransitionToStateDictionary _transitions;
@@ -47,11 +44,6 @@ namespace StateMachine
         public bool ContainsState(TStateType state)
         {
             return _states.ContainsKey(state);
-        }
-
-        public IEnumerable<TTransitionType> GetActiveTransitions()
-        {
-            return _transitionsActivity.GetActiveTransitions();
         }
 
         public bool ContainsTransition(TTransitionType transition)

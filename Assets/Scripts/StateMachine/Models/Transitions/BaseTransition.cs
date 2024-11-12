@@ -19,21 +19,17 @@ namespace StateMachine
     {
         private IStateTimingHandler<TStateType> _stateDelayHandler;
         private IEnumerable<TStateType> _usedInStates;
-        private ITransitionsActivityHandler<TTransitionType> _transitionsActivityHandler;
         private ITransitionsConfig<TStateType, TTransitionType> _config;
-
-        protected readonly Dictionary<TStateType, Func<bool>> _conditionCheckedInState = new();
 
         public abstract TStateType MoveToState { get; }
         public abstract TTransitionType Transition { get; }
 
-        protected ITransitionsActivityHandler<TTransitionType> TransitionsActivityHandler => _transitionsActivityHandler;
+        protected bool IsActive => true;
+        protected Dictionary<TStateType, Func<bool>> ConditionCheckedInState { get; } = new();
 
-        protected void Initialize(ITransitionsActivityHandler<TTransitionType> transitionsActivityHandler,
-            ITransitionsConfig<TStateType, TTransitionType> config, IStateTimingHandler<TStateType> stateDelayHandler)
+        protected void Initialize(ITransitionsConfig<TStateType, TTransitionType> config, IStateTimingHandler<TStateType> stateDelayHandler)
         {
             _config = config;
-            _transitionsActivityHandler = transitionsActivityHandler;
             _usedInStates = config.ContainsTransition(Transition) ? config.GetStatesForTransition(Transition) : new List<TStateType>(0);
             _stateDelayHandler = stateDelayHandler;
 
@@ -42,9 +38,9 @@ namespace StateMachine
 
         public bool CanActivate(TStateType inState)
         {
-            return _transitionsActivityHandler.IsTransitionActive(Transition) &&
+            return IsActive &&
                    (_stateDelayHandler.IsTimePassed(inState) || _config.CanTransitionInterruptStateTiming(inState, Transition)) &&
-                   _conditionCheckedInState[inState]();
+                   ConditionCheckedInState[inState]();
         }
 
         protected virtual bool Condition()
@@ -56,7 +52,7 @@ namespace StateMachine
         {
             foreach (var characterState in _usedInStates)
             {
-                _conditionCheckedInState[characterState] = Condition;
+                ConditionCheckedInState[characterState] = Condition;
             }
         }
     }

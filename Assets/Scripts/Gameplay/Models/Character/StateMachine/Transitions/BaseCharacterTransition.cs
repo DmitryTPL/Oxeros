@@ -6,10 +6,9 @@ namespace Gameplay
     public abstract class BaseCharacterTransition : BaseTransition<CharacterState, CharacterTransition>, ICharacterTransition
     {
         [Inject]
-        public void AddDependencies(ICharacterTransitionsActivityHandler abilitiesActivityHandler,
-            CharacterTransitionsConfig config, ICharacterStateTimingHandler stateDelayHandler)
+        public void AddDependencies(CharacterTransitionsConfig config, ICharacterStateTimingHandler stateDelayHandler)
         {
-            Initialize(abilitiesActivityHandler, config, stateDelayHandler);
+            Initialize(config, stateDelayHandler);
         }
     }
 }

@@ -286,12 +286,12 @@
   },
   "StateToTimeDictionary": {
     "Usings": [
-      "System"
+      "System",
+      "AYellowpaper.SerializedCollections"
     ],
     "RelativeDirectory": "Models/$NAME$/StateMachine/Configs/Data",
     "Attributes": [
-      "Serializable",
-      "AYellowpaper.SerializedCollections"
+      "Serializable"
     ],
     "DataType": "class",
     "Type": "$NAME$StateToTimeDictionary",
@@ -340,40 +340,6 @@
     "Content": [
       "Idle"
     ]
-  },
-  "TransitionsActivityHandler": {
-    "Usings": [
-      "StateMachine"
-    ],
-    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-    "Attributes": [],
-    "DataType": "class",
-    "Type": "$NAME$TransitionsActivityHandler",
-    "Inheritances": [
-      "BaseTransitionsActivityHandler<$NAME$State, $NAME$Transition>",
-      "I$NAME$TransitionsActivityHandler"
-    ],
-    "Constraints": [],
-    "Content": [
-      "public $NAME$TransitionsActivityHandler($NAME$TransitionsConfig config)",
-      "    : base(config)",
-      "{",
-      "}"
-    ]
-  },
-  "ITransitionsActivityHandler": {
-    "Usings": [
-      "StateMachine"
-    ],
-    "RelativeDirectory": "Models/$NAME$/StateMachine/Core/Transitions",
-    "Attributes": [],
-    "DataType": "interface",
-    "Type": "I$NAME$TransitionsActivityHandler",
-    "Inheritances": [
-      "ITransitionsActivityHandler<$NAME$Transition>"
-    ],
-    "Constraints": [],
-    "Content": []
   },
   "TransitionsHolder": {
     "Usings": [
@@ -432,10 +398,9 @@
     "Constraints": [],
     "Content": [
       "[Inject]",
-      "public void AddDependencies(I$NAME$TransitionsActivityHandler abilitiesActivityHandler,",
-      "    $NAME$TransitionsConfig config, I$NAME$StateTimingHandler stateDelayHandler)",
+      "public void AddDependencies($NAME$TransitionsConfig config, I$NAME$StateTimingHandler stateDelayHandler)",
       "{",
-      "    Initialize(abilitiesActivityHandler, config, stateDelayHandler);",
+      "    Initialize(config, stateDelayHandler);",
       "}"
     ]
   },
@@ -536,39 +501,6 @@
     "Constraints": [],
     "Content": []
   },
-  "TransitionActivity": {
-    "Usings": [
-      "System",
-      "StateMachine",
-      "UnityEngine"
-    ],
-    "RelativeDirectory": "Models/$NAME$/StateMachine/Configs",
-    "Attributes": [
-      "Serializable"
-    ],
-    "DataType": "class",
-    "Type": "$NAME$TransitionActivity",
-    "Inheritances": [
-      "BaseTransitionActivity<$NAME$Transition>"
-    ],
-    "Constraints": [],
-    "Content": [
-      "#pragma warning disable CS0414",
-      "[Serializable]",
-      "public class Move : BaseTransitionActivityDescription",
-      "{",
-      "    [SerializeField] [Transition((int)$NAME$Transition.Idle)] private bool _idle = true;",
-      "}",
-      "",
-      "[SerializeField] private Move _move;",
-      "",
-      "protected override $NAME$Transition ConvertFromInt(int value)",
-      "{",
-      "    return ($NAME$Transition)value;",
-      "}",
-      "#pragma warning restore CS0414"
-    ]
-  },
   "TransitionsConfig": {
     "Usings": [
       "StateMachine",
@@ -581,7 +513,7 @@
     "DataType": "class",
     "Type": "$NAME$TransitionsConfig",
     "Inheritances": [
-      "BaseTransitionsConfig<$NAME$State, $NAME$Transition, $NAME$TransitionActivity, $NAME$StatesList, $NAME$TransitionsList, $NAME$StateToTransitionsDictionary, $NAME$TransitionToStatesDictionary>"
+      "BaseTransitionsConfig<$NAME$State, $NAME$Transition, $NAME$StatesList, $NAME$TransitionsList, $NAME$StateToTransitionsDictionary, $NAME$TransitionToStatesDictionary>"
     ],
     "Constraints": [],
     "Content": []
@@ -626,7 +558,6 @@
       "",
       "private void InstallTransitions()",
       "{",
-      "    Container.BindInterfacesTo<$NAME$TransitionsActivityHandler>().AsSingle();",
       "    Container.BindInterfacesTo<$NAME$TransitionsHolder>().AsSingle();",
       "",
       "    Container.BindInterfacesTo<Idle$NAME$Transition>().AsSingle();",

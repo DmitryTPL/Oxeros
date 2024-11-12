@@ -31,7 +31,6 @@ namespace Gameplay
 
         private void InstallTransitions()
         {
-            Container.BindInterfacesTo<CharacterTransitionsActivityHandler>().AsSingle();
             Container.BindInterfacesTo<CharacterTransitionsHolder>().AsSingle();
 
             Container.BindInterfacesTo<IdleCharacterTransition>().AsSingle();
