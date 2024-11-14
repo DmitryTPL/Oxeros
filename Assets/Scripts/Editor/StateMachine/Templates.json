@@ -437,7 +437,7 @@
     ],
     "Constraints": [],
     "Content": [
-      "public override $NAME$State MoveToState => $NAME$State.Idle;",
+      "public override $NAME$State State => $NAME$State.Idle;",
       "public override $NAME$Transition Transition => $NAME$Transition.Idle;"
     ]
   },
@@ -547,6 +547,7 @@
       "    Container.BindInstance(destroyCancellationToken).AsCached();",
       "",
       "    Container.BindInterfacesAndSelfTo<$NAME$Presenter>().AsSingle();",
+      "    Container.BindInterfacesAndSelfTo<$NAME$StateChangeObserverPresenter>().AsSingle();",
       "",
       "    InstallStateMachine();",
       "    InstallTransitions();",

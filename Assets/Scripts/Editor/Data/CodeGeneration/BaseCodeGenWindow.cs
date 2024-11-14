@@ -13,6 +13,7 @@ public abstract class BaseCodeGenWindow : EditorWindow
 
     protected string Name { get; set; }
     protected string Namespace { get; set; }
+    protected bool IsInSeparateFolder { get; private set; }
 
     private void OnGUI()
     {
@@ -50,6 +51,10 @@ public abstract class BaseCodeGenWindow : EditorWindow
         Name = EditorGUILayout.TextField(Name);
 
         GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+        
+        IsInSeparateFolder = GUILayout.Toggle(IsInSeparateFolder, "Separate folder");
 
         AdditionalUiElements();
 

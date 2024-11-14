@@ -11,6 +11,7 @@ namespace Gameplay
             Container.BindInstance(destroyCancellationToken).AsCached();
 
             Container.BindInterfacesAndSelfTo<CharacterPresenter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CharacterStateChangeObserverPresenter>().AsSingle();
 
             InstallStateMachine();
             InstallTransitions();

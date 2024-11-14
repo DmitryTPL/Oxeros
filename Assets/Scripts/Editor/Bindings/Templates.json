@@ -73,7 +73,7 @@
         ],
         "Constraints": [],
         "Content": [
-            "[SerializeField] private CharacterAnimationToStateBindingPresenter.Data _data;",
+            "[SerializeField] private $NAME$AnimationToStateBindingPresenter.Data _data;",
             "",
             "protected override PresenterViewSharedData SharedData => _data;"
         ]

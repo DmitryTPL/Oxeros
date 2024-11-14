@@ -19,7 +19,10 @@ public class GenerateStateMachineWindow : BaseCodeGenWindow
 
     protected override void GenerateAssets(string path)
     {
-        var directory = Directory.CreateDirectory(Path.Combine(path, Name));
+        if (IsInSeparateFolder)
+        {
+            path = Directory.CreateDirectory(Path.Combine(path, Name)).FullName;
+        }
 
         var data = File.ReadAllText(Path.Combine(Application.dataPath, "Scripts/Editor/StateMachine/Templates.json"));
 
@@ -27,7 +30,7 @@ public class GenerateStateMachineWindow : BaseCodeGenWindow
 
         foreach (var template in templates)
         {
-            CreateScript(directory.FullName, template.Value);
+            CreateScript(path, template.Value);
         }
 
         Debug.Log("State machine created");

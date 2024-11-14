@@ -45,13 +45,16 @@ public class GenerateBindingsWindow : BaseCodeGenWindow
 
         foreach (var value in Enum.GetValues(typeof(Binding)))
         {
-            _bindingSelections.Add((Binding)value, false);
+            _bindingSelections.Add((Binding)value, true);
         }
     }
 
     protected override void GenerateAssets(string path)
     {
-        var directory = Directory.CreateDirectory(Path.Combine(path, Name));
+        if (IsInSeparateFolder)
+        {
+            path = Directory.CreateDirectory(Path.Combine(path, Name)).FullName;
+        }
 
         var data = File.ReadAllText(Path.Combine(Application.dataPath, "Scripts/Editor/Bindings/Templates.json"));
 
@@ -65,7 +68,7 @@ public class GenerateBindingsWindow : BaseCodeGenWindow
 
             if (selectedBindings.Contains(bindingType[0]))
             {
-                CreateScript(directory.FullName, template.Value);
+                CreateScript(path, template.Value);
             }
         }
 
