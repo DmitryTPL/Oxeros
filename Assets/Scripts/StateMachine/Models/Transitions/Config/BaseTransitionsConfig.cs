@@ -15,7 +15,7 @@ namespace StateMachine
         bool ContainsState(TStateType state);
         bool ContainsTransition(TTransitionType transition);
         List<TStateType> GetStatesForTransition(TTransitionType transition);
-        bool CanTransitionInterruptStateTiming(TStateType currentState, TTransitionType interruptingTransition);
+        bool CanTransitionInterruptState(TStateType currentState, TTransitionType interruptingTransition);
     }
 
     public abstract class BaseTransitionsConfig<TStateType, TTransitionType, TStatesList, TTransitionsList, TStateToTransitionsDictionary,
@@ -56,7 +56,7 @@ namespace StateMachine
             return _transitions[transition].UsedInStates;
         }
 
-        public bool CanTransitionInterruptStateTiming(TStateType currentState, TTransitionType interruptingTransition)
+        public bool CanTransitionInterruptState(TStateType currentState, TTransitionType interruptingTransition)
         {
             return _stateInterruptedByTransitions.ContainsKey(currentState) && _stateInterruptedByTransitions[currentState].UsedTransitions.Contains(interruptingTransition);
         }

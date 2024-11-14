@@ -4,6 +4,8 @@ namespace Gameplay
     {
         Idle,
         Move,
-        Attack
+        Attack,
+        BeginDefence,
+        EndDefence
     }
 }

@@ -8,39 +8,39 @@ namespace StateMachine
         where TTransitionType : Enum
     {
         TTransitionType Transition { get; }
-        TStateType MoveToState { get; }
+        TStateType State { get; }
 
-        bool CanActivate(TStateType inState);
+        bool IsTransitionFromStateValid(TStateType inState);
     }
 
     public abstract class BaseTransition<TStateType, TTransitionType> : ITransition<TStateType, TTransitionType>
         where TStateType : Enum
         where TTransitionType : Enum
     {
-        private IStateTimingHandler<TStateType> _stateDelayHandler;
-        private IEnumerable<TStateType> _usedInStates;
+        private IStateTimingHandler<TStateType> _stateTimeHandler;
+        private IEnumerable<TStateType> _statesUsingTransition;
         private ITransitionsConfig<TStateType, TTransitionType> _config;
 
-        public abstract TStateType MoveToState { get; }
+        public abstract TStateType State { get; }
         public abstract TTransitionType Transition { get; }
 
-        protected bool IsActive => true;
-        protected Dictionary<TStateType, Func<bool>> ConditionCheckedInState { get; } = new();
+        protected virtual bool IsActive => true;
+        protected Dictionary<TStateType, Func<bool>> ConditionForState { get; } = new();
 
         protected void Initialize(ITransitionsConfig<TStateType, TTransitionType> config, IStateTimingHandler<TStateType> stateDelayHandler)
         {
             _config = config;
-            _usedInStates = config.ContainsTransition(Transition) ? config.GetStatesForTransition(Transition) : new List<TStateType>(0);
-            _stateDelayHandler = stateDelayHandler;
+            _statesUsingTransition = config.ContainsTransition(Transition) ? config.GetStatesForTransition(Transition) : new List<TStateType>(0);
+            _stateTimeHandler = stateDelayHandler;
 
             FillConditionForStates();
         }
 
-        public bool CanActivate(TStateType inState)
+        public bool IsTransitionFromStateValid(TStateType inState)
         {
-            return IsActive &&
-                   (_stateDelayHandler.IsTimePassed(inState) || _config.CanTransitionInterruptStateTiming(inState, Transition)) &&
-                   ConditionCheckedInState[inState]();
+            var canBeInterrupted = _config.CanTransitionInterruptState(inState, Transition);
+
+            return IsActive && (_stateTimeHandler.IsTimePassed(inState) || canBeInterrupted) && ConditionForState[inState]();
         }
 
         protected virtual bool Condition()
@@ -50,9 +50,9 @@ namespace StateMachine
 
         protected virtual void FillConditionForStates()
         {
-            foreach (var characterState in _usedInStates)
+            foreach (var state in _statesUsingTransition)
             {
-                ConditionCheckedInState[characterState] = Condition;
+                ConditionForState[state] = Condition;
             }
         }
     }

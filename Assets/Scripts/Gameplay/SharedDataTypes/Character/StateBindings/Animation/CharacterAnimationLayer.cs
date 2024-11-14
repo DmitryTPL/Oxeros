@@ -2,6 +2,7 @@ namespace Gameplay
 {
     public enum CharacterAnimationLayer
     {
-        BaseLayer
+        BaseLayer,
+        Battle
     }
 }

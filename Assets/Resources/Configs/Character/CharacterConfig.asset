@@ -18,3 +18,7 @@ MonoBehaviour:
   _maxAcceleration: 3
   _rotationSpeed: 100
   _rotationDamper: 0.3
+  _speedModifications:
+    _serializedList:
+    - Key: 0
+      Value: 0.15

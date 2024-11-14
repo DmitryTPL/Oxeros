@@ -27,6 +27,8 @@ namespace Gameplay
             Container.BindInterfacesTo<IdleCharacterState>().AsSingle();
             Container.BindInterfacesTo<MoveCharacterState>().AsSingle();
             Container.BindInterfacesTo<AttackCharacterState>().AsSingle();
+            Container.BindInterfacesTo<BeginDefenceCharacterState>().AsSingle();
+            Container.BindInterfacesTo<EndDefenceCharacterState>().AsSingle();
         }
 
         private void InstallTransitions()
@@ -36,6 +38,8 @@ namespace Gameplay
             Container.BindInterfacesTo<IdleCharacterTransition>().AsSingle();
             Container.BindInterfacesTo<MoveCharacterTransition>().AsSingle();
             Container.BindInterfacesTo<AttackCharacterTransition>().AsSingle();
+            Container.BindInterfacesTo<BeginDefenceCharacterTransition>().AsSingle();
+            Container.BindInterfacesTo<EndDefenceCharacterTransition>().AsSingle();
         }
     }
 }

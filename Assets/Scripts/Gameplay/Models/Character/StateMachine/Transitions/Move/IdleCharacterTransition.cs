@@ -4,7 +4,7 @@ namespace Gameplay
     {
         private readonly IMoveInputData _inputData;
 
-        public override CharacterState MoveToState => CharacterState.Idle;
+        public override CharacterState State => CharacterState.Idle;
         public override CharacterTransition Transition => CharacterTransition.Idle;
 
         public IdleCharacterTransition(IMoveInputData inputData)

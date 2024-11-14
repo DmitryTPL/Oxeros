@@ -4,7 +4,7 @@
     {
         private readonly IAttackInputData _attackInputData;
 
-        public override CharacterState MoveToState => CharacterState.Attack;
+        public override CharacterState State => CharacterState.Attack;
         public override CharacterTransition Transition => CharacterTransition.Attack;
 
         public AttackCharacterTransition(IAttackInputData attackInputData)

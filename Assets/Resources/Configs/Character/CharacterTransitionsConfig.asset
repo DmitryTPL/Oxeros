@@ -16,26 +16,41 @@ MonoBehaviour:
     _serializedList:
     - Key: 0
       Value:
-        _usedTransitions: 0100000002000000
+        _usedTransitions: 01000000020000000300000004000000
     - Key: 1
       Value:
-        _usedTransitions: 0000000002000000
+        _usedTransitions: 00000000020000000300000004000000
     - Key: 2
+      Value:
+        _usedTransitions: 02000000030000000000000001000000
+    - Key: 3
+      Value:
+        _usedTransitions: 04000000020000000000000001000000
+    - Key: 4
       Value:
         _usedTransitions: 020000000000000001000000
   _stateInterruptedByTransitions:
-    _serializedList: []
+    _serializedList:
+    - Key: 3
+      Value:
+        _usedTransitions: 02000000
   _transitions:
     _serializedList:
     - Key: 1
       Value:
-        _usedInStates: 0000000002000000
+        _usedInStates: 00000000020000000300000004000000
     - Key: 2
       Value:
+        _usedInStates: 0000000001000000020000000300000004000000
+    - Key: 3
+      Value:
         _usedInStates: 000000000100000002000000
+    - Key: 4
+      Value:
+        _usedInStates: 000000000100000003000000
     - Key: 0
       Value:
-        _usedInStates: 0100000002000000
+        _usedInStates: 01000000020000000300000004000000
   _statesForAdd: 
   _transitionForAdd: 0
   _transitionForRemove: 0
