@@ -62,7 +62,7 @@ namespace Gameplay
                 return;
             }
             
-            _data.Animator.SetFloat(_speedFactorAnimatorParameter, 1f);
+            _data.Animator.SetFloat(_speedFactorAnimatorParameter, _speedModifiers.TotalValue);
         }
     }
 }

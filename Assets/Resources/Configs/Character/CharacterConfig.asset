@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
   _gravitationFactor: 1
-  _maxSpeed: 0.25
-  _acceleration: 3
-  _maxAcceleration: 3
+  _maxSpeed: 3
+  _acceleration: 20
+  _maxAcceleration: 100
   _rotationSpeed: 100
   _rotationDamper: 0.3
   _speedModifications:
     _serializedList:
     - Key: 0
-      Value: 0.15
+      Value: 0.5

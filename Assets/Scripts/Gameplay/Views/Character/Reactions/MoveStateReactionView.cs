@@ -16,7 +16,7 @@ namespace Gameplay
 
         private void AccelerationChanged(Vector3 acceleration)
         {
-            _rigidbody.AddForce(acceleration, ForceMode.VelocityChange);
+            _rigidbody.AddForce(acceleration, ForceMode.Acceleration);
         }
     }
 }

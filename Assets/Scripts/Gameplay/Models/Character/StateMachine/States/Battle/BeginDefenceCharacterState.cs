@@ -24,7 +24,7 @@ namespace Gameplay
         {
             await base.HandleControl();
 
-            ApplyMove(_moveInputData.Value * Config.MaxSpeed);
+            ApplyMove(Config.MaxSpeed);
         }
     }
 }

@@ -80,14 +80,19 @@ namespace Gameplay
             _gravityForceReaction.GravityForce.Value = Physics.gravity * Config.GravitationFactor;
         }
 
-        protected void ApplyMove(Vector3 moveVelocity)
+        protected void ApplyMove(float speed)
         {
-            if (moveVelocity.magnitude < float.Epsilon)
+            ApplyMove(MoveDirection, speed);
+        }
+
+        protected void ApplyMove(Vector3 direction, float speed)
+        {
+            if (direction == Vector3.zero)
             {
                 return;
             }
 
-            moveVelocity *= _speedModifiersHolder.TotalValue;
+            var moveVelocity = direction * speed * _speedModifiersHolder.TotalValue;
 
             PersistentData.GoalVelocity = Vector3.MoveTowards(PersistentData.GoalVelocity, moveVelocity, Config.Acceleration * AppTime.FixedDeltaTime);
 
