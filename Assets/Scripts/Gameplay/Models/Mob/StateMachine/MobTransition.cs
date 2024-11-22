@@ -2,6 +2,13 @@ namespace Gameplay
 {
     public enum MobTransition
     {
-        Idle
+        Idle,
+        Roam,
+        Notice,
+        RotateToTarget,
+        Approach,
+        ReturnToRoamArea,
+        Attack,
+        AttackPause
     }
 }
