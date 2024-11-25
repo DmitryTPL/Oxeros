@@ -1,8 +1,8 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Linq;
-using Data;
 using MVP;
+using Shared;
 using UnityEngine;
 using Zenject;
 

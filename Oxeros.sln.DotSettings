@@ -48,6 +48,21 @@
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=8084CCAC7FE483459EFC6A5A452F827A/Shortcut/@EntryValue">propReactSub</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=8084CCAC7FE483459EFC6A5A452F827A/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=8084CCAC7FE483459EFC6A5A452F827A/Text/@EntryValue">$REACTIVE_PROP$.WithoutCurrent().ForEachAsync($CALLBACK$, destroyCancellationToken).Forget();</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Description/@EntryValue">MVP View SharedData</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Field/=PRESENTER/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Field/=PRESENTER/Expression/@EntryValue">guessExpectedType("")</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Field/=PRESENTER/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Shortcut/@EntryValue">shada</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Text/@EntryValue">[SerializeField] private $PRESENTER$.Data _data;
+
+        protected override PresenterViewSharedData SharedData =&gt; _data;</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/Scope/=A32573B30A4F5B408A5C00ECA4ED3B30/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/Scope/=A32573B30A4F5B408A5C00ECA4ED3B30/Type/@EntryValue">InUnityCSharpProject</s:String>

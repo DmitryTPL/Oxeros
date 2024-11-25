@@ -20,8 +20,6 @@ namespace StateMachine
         protected TStateTimingHandler StateTimingHandler { get; private set; }
         protected TStateTimingConfig StateTimeConfig { get; private set; }
 
-        protected virtual Func<bool> ExitCondition => null;
-
         [Inject]
         public void AddDependenciesBase(TTransitionsHolder transitionsHolder, TStateTimingHandler stateTimingHandler,
             TStateTimingConfig stateTimeConfig)
@@ -34,18 +32,13 @@ namespace StateMachine
 
         public override UniTask Enter()
         {
-            StateTimingHandler.SetTiming(State, ExitCondition == null ? StateTimeConfig.GetDelay(State) : float.MaxValue);
+            StateTimingHandler.SetTiming(State,StateTimeConfig.GetDelay(State));
 
             return base.Enter();
         }
 
         protected override async UniTask<TStateType> TryMakeTransition()
         {
-            if (ExitCondition?.Invoke() ?? false)
-            {
-                StateTimingHandler.SetTiming(State, 0);
-            }
-            
             foreach (var transition in _transitionsHolder.GetTransitions(State))
             {
                 if (transition.IsTransitionFromStateValid(State))

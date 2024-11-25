@@ -1,6 +1,6 @@
-﻿using Data;
-using Gameplay.Presenters;
+﻿using Gameplay.Presenters;
 using Gameplay.Views;
+using Shared;
 using Zenject;
 
 namespace Gameplay

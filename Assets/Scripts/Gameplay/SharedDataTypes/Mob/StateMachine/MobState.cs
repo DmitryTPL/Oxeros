@@ -9,6 +9,7 @@ namespace Gameplay
         Approach,
         ReturnToRoamArea,
         Attack,
-        AttackPause
+        AttackPause,
+        RoamRotation
     }
 }

@@ -40,9 +40,7 @@
       "IPersistentData"
     ],
     "Constraints": [],
-    "Content": [
-      "public Guid Guid { get; set; }"
-    ]
+    "Content": []
   },
   "PerUpdateData": {
     "Usings": [],
@@ -150,8 +148,8 @@
     "Constraints": [],
     "Content": [
       "protected $NAME$Config Config { get; private set; }",
-      "protected IPersistentData PersistentData { get; private set; }",
-      "protected IPerUpdateData PerUpdateData { get; private set; }",
+      "protected I$NAME$PersistentData PersistentData { get; private set; }",
+      "protected I$NAME$PerUpdateData PerUpdateData { get; private set; }",
       "",
       "[Inject]",
       "public void AddDependencies($NAME$Config config, I$NAME$PersistentData persistentData, I$NAME$PerUpdateData perUpdateData)",
