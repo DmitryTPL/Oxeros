@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Shared;
 using UnityEngine;
 
 namespace Gameplay
@@ -29,14 +30,14 @@ namespace Gameplay
 
             _rotateAbility.StopRotation();
             _moveAbility.StopMovement();
-            _persistentData.RoamRotationFinished = false;
+            _persistentData.IsRoamRotationFinished = false;
 
             const int pathGenerationTries = 10;
 
             for (var i = 0; i < pathGenerationTries; i++)
             {
                 _persistentData.RoamPathDestination = _roamArea.GetPointInside();
-                _persistentData.RoamPathStart = _perUpdateData.Position;
+                _persistentData.RoamPathStart = Vector3.ProjectOnPlane(_perUpdateData.Position, Vector3.up);
 
                 var path = _persistentData.RoamPathDestination - _persistentData.RoamPathStart;
 
@@ -53,10 +54,16 @@ namespace Gameplay
         {
             await base.HandleControl();
 
-            if (Vector3.Angle(Vector3.ProjectOnPlane(_persistentData.RoamPathDirection, Vector3.up),
-                    Vector3.ProjectOnPlane(_perUpdateData.Rotation * Vector3.forward, Vector3.up)) < 3)
+            const float differenceAngles = 0.1f;
+            const float directionsMinDifference = 1 - differenceAngles * Mathf.Deg2Rad;
+
+            var difference = MathUtils.GetVectorsDirectionDifference(_persistentData.RoamPathDirection, _perUpdateData.Rotation * Vector3.forward, Vector3.up);
+
+            if (difference > directionsMinDifference)
             {
-                _persistentData.RoamRotationFinished = true;
+                _persistentData.IsRoamRotationFinished = true;
+                _rotateAbility.ForceRotate(_persistentData.RoamPathDirection);
+                return;
             }
 
             _rotateAbility.Rotate(_persistentData.RoamPathDirection);

@@ -20,5 +20,10 @@ namespace Shared
         {
             return new Quaternion(quaternion.x * scalar, quaternion.y * scalar, quaternion.z * scalar, quaternion.w * scalar);
         }
+
+        public static float GetVectorsDirectionDifference(Vector3 a, Vector3 b, Vector3 planeNormal)
+        {
+            return Vector3.Dot(Vector3.ProjectOnPlane(a, planeNormal), Vector3.ProjectOnPlane(b, planeNormal));
+        }
     }
 }

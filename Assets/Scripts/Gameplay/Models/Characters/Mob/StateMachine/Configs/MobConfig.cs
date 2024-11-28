@@ -15,11 +15,15 @@ namespace Gameplay
         [Header("Roam")]
         [SerializeField] private float _roamingMaxSpeed = 1;
         
+        [Header("Attack")]
+        [SerializeField] private float _attackDistance = 1;
+        
         public float MaxSpeed => _maxSpeed;
         public float Acceleration => _acceleration;
         public float MaxAcceleration => _maxAcceleration;
         public float RotationSpeed => _rotationSpeed;
         public float RotationDamper => _rotationDamper;
         public float RoamingMaxSpeed => _roamingMaxSpeed;
+        public float AttackDistance => _attackDistance;
     }
 }

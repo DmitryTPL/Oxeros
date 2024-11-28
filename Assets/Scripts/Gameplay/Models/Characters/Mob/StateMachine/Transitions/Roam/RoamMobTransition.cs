@@ -16,7 +16,7 @@
         {
             base.FillConditionForStates();
 
-            ConditionForState[MobState.RoamRotation] = () => _persistentData.RoamRotationFinished;
+            ConditionForState[MobState.RoamRotation] = () => _persistentData.IsRoamRotationFinished;
         }
     }
 }

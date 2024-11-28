@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: CapsuleMobStateTimeConfig
   m_EditorClassIdentifier: 
   _stateTime:
-    _serializedList: []
+    _serializedList:
+    - Key: 9
+      Value: 3
+    - Key: 6
+      Value: 0.45
+    - Key: 7
+      Value: 1

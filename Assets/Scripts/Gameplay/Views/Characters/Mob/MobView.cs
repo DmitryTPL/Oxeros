@@ -8,5 +8,10 @@ namespace Gameplay
         [SerializeField] private MobPresenter.Data _data;
 
         protected override PresenterViewSharedData SharedData => _data;
+
+        private void Start()
+        {
+            _data.ResetInertia();
+        }
     }
 }

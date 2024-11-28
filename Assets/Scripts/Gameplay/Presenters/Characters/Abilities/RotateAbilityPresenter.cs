@@ -32,6 +32,7 @@ namespace Gameplay
 
             rotateAbility.Direction.WithoutCurrent().ForEachAsync(DirectionChanged).Forget();
             rotateAbility.Stop.WithoutCurrent().ForEachAsync(StopRotation).Forget();
+            rotateAbility.ForceDirection.WithoutCurrent().ForEachAsync(ForceRotate).Forget();
         }
 
         protected override void InitializeData()
@@ -46,7 +47,7 @@ namespace Gameplay
             var rotation = GetRotation(direction, _data.Transform.rotation, _data.Rigidbody.angularVelocity,
                 _rotateAbility.Parameters.RotationSpeed, _rotateAbility.Parameters.RotationDamper);
 
-            _data.Rigidbody.AddTorque(rotation);
+            _data.Rigidbody.AddTorque(rotation * _data.Rigidbody.mass);
         }
 
         private void StopRotation(bool _)
@@ -54,10 +55,14 @@ namespace Gameplay
             _data.Rigidbody.angularVelocity = Vector3.zero;
         }
 
+        private void ForceRotate(Vector3 direction)
+        {
+            _data.Rigidbody.angularVelocity = Vector3.zero;
+            _data.Rigidbody.transform.rotation = Quaternion.LookRotation(direction);
+        }
+
         private Vector3 GetRotation(Vector3 direction, Quaternion currentRotation, Vector3 angularVelocity, float rotationSpeed, float rotationDamper)
         {
-            direction = new Vector3(direction.x, 0, direction.z);
-
             var rotation = Quaternion.LookRotation(direction);
             var targetRotation = Quaternion.Slerp(currentRotation, rotation, MathUtils.GetInterpolant(rotationSpeed, _appTime.FixedDeltaTime));
 

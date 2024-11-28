@@ -16,7 +16,7 @@
         {
             base.FillConditionForStates();
 
-            ConditionForState[MobState.Roam] = () => _persistentData.RoamMoveOnPathFinished;
+            ConditionForState[MobState.Roam] = () => _persistentData.IsRoamMoveOnPathFinished;
         }
     }
 }

@@ -16,6 +16,12 @@ namespace Gameplay
             public Vector3 LinearVelocity => _rigidbody.linearVelocity;
             public Vector3 AngularVelocity => _rigidbody.angularVelocity;
             public Quaternion Rotation => _rigidbody.transform.rotation;
+
+            public void ResetInertia()
+            {
+                _rigidbody.inertiaTensor = _rigidbody.inertiaTensor;
+                _rigidbody.inertiaTensorRotation = _rigidbody.inertiaTensorRotation;
+            }
         }
 
         private readonly IMobPerUpdateData _perUpdateData;

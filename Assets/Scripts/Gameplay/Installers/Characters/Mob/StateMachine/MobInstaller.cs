@@ -29,11 +29,12 @@ namespace Gameplay
             Container.BindInterfacesTo<RoamMobState>().AsSingle();
             Container.BindInterfacesTo<NoticeMobState>().AsSingle();
             Container.BindInterfacesTo<RotateToTargetMobState>().AsSingle();
-            Container.BindInterfacesTo<ApproachMobState>().AsSingle();
+            Container.BindInterfacesTo<ApproachTargetMobState>().AsSingle();
             Container.BindInterfacesTo<AttackMobState>().AsSingle();
             Container.BindInterfacesTo<AttackPauseMobState>().AsSingle();
             Container.BindInterfacesTo<ReturnToRoamAreaMobState>().AsSingle();
             Container.BindInterfacesTo<RoamRotationMobState>().AsSingle();
+            Container.BindInterfacesTo<WaitForTargetMobState>().AsSingle();
         }
 
         private void InstallTransitions()
@@ -44,11 +45,12 @@ namespace Gameplay
             Container.BindInterfacesTo<RoamMobTransition>().AsSingle();
             Container.BindInterfacesTo<NoticeMobTransition>().AsSingle();
             Container.BindInterfacesTo<RotateToTargetMobTransition>().AsSingle();
-            Container.BindInterfacesTo<ApproachMobTransition>().AsSingle();
+            Container.BindInterfacesTo<ApproachTargetMobTransition>().AsSingle();
             Container.BindInterfacesTo<AttackMobTransition>().AsSingle();
             Container.BindInterfacesTo<AttackPauseMobTransition>().AsSingle();
             Container.BindInterfacesTo<ReturnToRoamAreaMobTransition>().AsSingle();
             Container.BindInterfacesTo<RoamRotationMobTransition>().AsSingle();
+            Container.BindInterfacesTo<WaitForTargetMobTransition>().AsSingle();
         }
     }
 }

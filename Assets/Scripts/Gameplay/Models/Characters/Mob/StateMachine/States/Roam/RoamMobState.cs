@@ -8,14 +8,17 @@ namespace Gameplay
         private readonly IMoveAbility _moveAbility;
         private readonly IMobPerUpdateData _perUpdateData;
         private readonly IMobPersistentData _persistentData;
+        private readonly IRotateAbility _rotateAbility;
 
         public override MobState State => MobState.Roam;
 
-        public RoamMobState(IMoveAbility moveAbility, IMobPerUpdateData perUpdateData, IMobPersistentData persistentData)
+        public RoamMobState(IMoveAbility moveAbility, IMobPerUpdateData perUpdateData, IMobPersistentData persistentData,
+            IRotateAbility rotateAbility)
         {
             _moveAbility = moveAbility;
             _perUpdateData = perUpdateData;
             _persistentData = persistentData;
+            _rotateAbility = rotateAbility;
         }
 
         protected override async UniTask HandleControl()
@@ -24,20 +27,23 @@ namespace Gameplay
 
             if (_perUpdateData.Position.IsDestinationReached(_persistentData.RoamPathDestination, _persistentData.RoamPathStart, 0.1f, true))
             {
-                _persistentData.RoamMoveOnPathFinished = true;
+                _persistentData.IsRoamMoveOnPathFinished = true;
                 return;
             }
 
             _moveAbility.Move(_persistentData.RoamPathDirection, Config.RoamingMaxSpeed);
+            _rotateAbility.ForceRotate(_persistentData.RoamPathDirection);
 
-            Debug.DrawLine(_perUpdateData.Position, _persistentData.RoamPathDestination, Color.red);
+            var destination = new Vector3(_persistentData.RoamPathDestination.x, _perUpdateData.Position.y, _persistentData.RoamPathDestination.z);
+
+            Debug.DrawLine(_perUpdateData.Position, destination, Color.red);
         }
 
         public override async UniTask Exit()
         {
             await base.Enter();
 
-            _persistentData.RoamMoveOnPathFinished = false;
+            _persistentData.IsRoamMoveOnPathFinished = false;
         }
     }
 }
