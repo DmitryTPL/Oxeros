@@ -9,13 +9,17 @@ namespace Gameplay
         private readonly IMoveAbility _moveAbility;
         private readonly IRotateAbility _rotateAbility;
         private readonly ICharacterPersistentData _persistentData;
+        private readonly IAttackAbility _attackAbility;
+
         public override CharacterState State => CharacterState.Attack;
 
-        public AttackCharacterState(IMoveInputData moveInputData, IMoveAbility moveAbility, IRotateAbility rotateAbility, ICharacterPersistentData persistentData)
+        public AttackCharacterState(IMoveInputData moveInputData, IMoveAbility moveAbility, IRotateAbility rotateAbility, ICharacterPersistentData persistentData,
+            IAttackAbility attackAbility)
         {
             _moveAbility = moveAbility;
             _rotateAbility = rotateAbility;
             _persistentData = persistentData;
+            _attackAbility = attackAbility;
             _moveInputData = moveInputData;
         }
 
@@ -24,6 +28,8 @@ namespace Gameplay
             await base.Enter();
 
             _persistentData.IsDefending = false;
+
+            _attackAbility.BeginAttack();
         }
 
         protected override async UniTask HandleControl()
@@ -39,6 +45,13 @@ namespace Gameplay
             {
                 _rotateAbility.StopRotation();
             }
+        }
+
+        public override async UniTask Exit()
+        {
+            await base.Exit();
+
+            _attackAbility.EndAttack();
         }
     }
 }

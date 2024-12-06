@@ -155,5 +155,77 @@
             "    Container.BindInterfacesAndSelfTo<$NAME$AnimationToStateBindingPresenter>().AsSingle();",
             "}"
         ]
+    },
+    "UnityEvent_UnityEventToStateBindingPresenter" : {
+        "Usings": [
+            "StateBindings",
+            "UnityEngine.Events"
+        ],
+        "RelativeDirectory": "Presenters/$NAME$/StateBindings",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$UnityEventToStateBindingPresenter",
+        "Inheritances": [
+            "BaseDataToStateBindingPresenter<$NAME$State, $NAME$UnityEventToStateBinding, UnityEvent>"
+        ],
+        "Constraints": [],
+        "Content": [
+            "protected override void ProcessStateData(UnityEvent data)",
+            "{",
+            "    data?.Invoke();",
+            "}"
+        ]
+    },
+    "UnityEvent_UnityEventToStateBindingView": {
+        "Usings": [
+            "StateBindings",
+            "UnityEngine.Events"
+        ],
+        "RelativeDirectory": "Views/$NAME$/StateBindings",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$UnityEventToStateBindingView",
+        "Inheritances": [
+            "BaseDataToStateBindingView<$NAME$UnityEventToStateBindingPresenter, $NAME$State, $NAME$UnityEventToStateBinding, UnityEvent>"
+        ],
+        "Constraints": [],
+        "Content": []
+    },
+    "UnityEvent_UnityEventToStateBinding": {
+        "Usings": [
+            "System",
+            "StateBindings",
+            "UnityEngine.Events"
+        ],
+        "RelativeDirectory": "SharedDataTypes/$NAME$/StateBindings/UnityEvent",
+        "Attributes": [
+            "Serializable"
+        ],
+        "DataType": "class",
+        "Type": "$NAME$UnityEventToStateBinding",
+        "Inheritances": [
+            "BaseDataToStateBinding<UnityEvent, $NAME$State>"
+        ],
+        "Constraints": [],
+        "Content": []
+    },
+    "UnityEvent_Installer": {
+        "Usings": [
+            "Zenject"
+        ],
+        "RelativeDirectory": "Installers/$NAME$/StateBindings",
+        "Attributes": [],
+        "DataType": "class",
+        "Type": "$NAME$UnityEventToStateBindingInstaller",
+        "Inheritances": [
+            "MonoInstaller"
+        ],
+        "Constraints": [],
+        "Content": [
+            "public override void InstallBindings()",
+            "{",
+            "    Container.BindInterfacesAndSelfTo<$NAME$UnityEventToStateBindingPresenter>().AsSingle();",
+            "}"
+        ]
     }
 }

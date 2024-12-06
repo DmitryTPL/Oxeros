@@ -16,5 +16,12 @@
         {
             return _persistentData.IsTargetApproached;
         }
+
+        protected override void FillConditionForStates()
+        {
+            base.FillConditionForStates();
+
+            ConditionForState[MobState.AttackPause] = () => true;
+        }
     }
 }

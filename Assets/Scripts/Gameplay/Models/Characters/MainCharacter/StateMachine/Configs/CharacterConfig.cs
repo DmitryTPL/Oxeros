@@ -5,7 +5,9 @@ using UnityEngine;
 namespace Gameplay
 {
     [Serializable]
-    public class SpeedModificationToValueDictionary : SerializedDictionary<SpeedModification, float>{}
+    public class SpeedModificationToValueDictionary : SerializedDictionary<SpeedModification, float>
+    {
+    }
 
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "ScriptableObjects/Character/CharacterConfig", order = 0)]
     public class CharacterConfig : ScriptableObject
@@ -21,6 +23,9 @@ namespace Gameplay
         [SerializeField] private float _rotationDamper;
         [SerializeField, SerializedDictionary("Name", "Value")] private SpeedModificationToValueDictionary _speedModifications;
 
+        [Header("Health")]
+        [SerializeField] private float _health = 3;
+
         public float GravitationFactor => _gravitationFactor;
         public float MaxSpeed => _maxSpeed;
         public float Acceleration => _acceleration;
@@ -28,5 +33,6 @@ namespace Gameplay
         public float RotationSpeed => _rotationSpeed;
         public float RotationDamper => _rotationDamper;
         public SpeedModificationToValueDictionary SpeedModifications => _speedModifications;
+        public float Health => _health;
     }
 }

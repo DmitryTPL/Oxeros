@@ -29,7 +29,6 @@
             base.FillConditionForStates();
 
             ConditionForState[MobState.RotateToTarget] = () => Condition() && _persistentData.IsRotationToTargetFinished;
-            ConditionForState[MobState.Attack] = () => Condition() && (_noticeEnemyArea.Enemy.position - _perUpdateData.Position).magnitude > _config.AttackDistance;
             ConditionForState[MobState.AttackPause] = () => Condition() && (_noticeEnemyArea.Enemy.position - _perUpdateData.Position).magnitude > _config.AttackDistance;
         }
     }

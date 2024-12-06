@@ -10,7 +10,8 @@ public class GenerateBindingsWindow : BaseCodeGenWindow
 {
     public enum Binding
     {
-        Animation
+        Animation,
+        UnityEvent
     }
 
     [MenuItem("Generate/Bindings")]
@@ -35,6 +36,7 @@ public class GenerateBindingsWindow : BaseCodeGenWindow
         GUILayout.Label("Bindings:");
 
         _bindingSelections![Binding.Animation] = GUILayout.Toggle(_bindingSelections[Binding.Animation], "Animation");
+        _bindingSelections![Binding.UnityEvent] = GUILayout.Toggle(_bindingSelections[Binding.UnityEvent], "UnityEvent");
 
         GUILayout.Space(10);
     }

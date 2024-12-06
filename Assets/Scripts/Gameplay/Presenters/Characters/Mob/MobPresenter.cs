@@ -33,7 +33,8 @@ namespace Gameplay
         public MobPresenter() { }
 
         [Inject]
-        public MobPresenter(IMobPerUpdateData perUpdateData, MobConfig config, IMoveAbility moveAbility, IRotateAbility rotateAbility)
+        public MobPresenter(IMobPerUpdateData perUpdateData, MobConfig config, IMoveAbility moveAbility, IRotateAbility rotateAbility,
+            IHealthHandler healthHandler)
         {
             _perUpdateData = perUpdateData;
             _config = config;
@@ -42,6 +43,7 @@ namespace Gameplay
 
             moveAbility.Init(config.Acceleration, config.MaxAcceleration);
             rotateAbility.Init(config.RotationSpeed, config.RotationDamper);
+            healthHandler.Init(config.Health);
         }
 
         protected override void InitializeData()

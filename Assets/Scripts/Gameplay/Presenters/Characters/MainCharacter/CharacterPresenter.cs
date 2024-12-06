@@ -9,7 +9,7 @@ namespace Gameplay
     public class CharacterPresenter : StatePresenterBase<CharacterState>, IFixedTickable
     {
         [Serializable]
-        public class Data: PresenterViewSharedData
+        public class Data : PresenterViewSharedData
         {
             [SerializeField] private Rigidbody _rigidbody;
 
@@ -17,19 +17,21 @@ namespace Gameplay
             public Vector3 AngularVelocity => _rigidbody.angularVelocity;
             public Quaternion Rotation => _rigidbody.transform.rotation;
         }
-        
+
         private readonly ICharacterPerUpdateData _perUpdateData;
         private Data _data;
 
         public CharacterPresenter() { }
 
         [Inject]
-        public CharacterPresenter(ICharacterPerUpdateData perUpdateData, CharacterConfig config, IMoveAbility moveAbility, IRotateAbility rotateAbility)
+        public CharacterPresenter(ICharacterPerUpdateData perUpdateData, CharacterConfig config, IMoveAbility moveAbility, IRotateAbility rotateAbility,
+            IHealthHandler healthHandler)
         {
             _perUpdateData = perUpdateData;
 
             moveAbility.Init(config.Acceleration, config.MaxAcceleration);
             rotateAbility.Init(config.RotationSpeed, config.RotationDamper);
+            healthHandler.Init(config.Health);
         }
 
         protected override void InitializeData()
