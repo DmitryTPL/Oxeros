@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2335776437074357954}
-  - component: {fileID: 2205166835351216158}
   - component: {fileID: 5894750286126175650}
+  - component: {fileID: 3208655491051387516}
   m_Layer: 0
   m_Name: EdgeDamage
   m_TagString: Untagged
@@ -33,18 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4161368944671757231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2205166835351216158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128974563693890515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa0adc0c46444bd8348e7fc2876f4b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5894750286126175650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,9 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8e345c838b4d85b9a484f1ff896b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 4bf0cd24-064e-4978-becc-3b0221effa8a
+  _guid: d8fcb6e0-cbc6-44a6-a3c5-816034132aad
   _data:
     _damage: 1
+--- !u!114 &3208655491051387516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128974563693890515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa0adc0c46444bd8348e7fc2876f4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2909549233569209595
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monoInstallers:
-  - {fileID: 2205166835351216158}
+  - {fileID: 3208655491051387516}
 --- !u!1 &7631808834966484992
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 611941981074415197}
   - component: {fileID: 2697938314539382149}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: BaseWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,6 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fc09974c4f4e419e53feb2f369b627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: f40b453e-89e3-41a3-a6bc-eba347b94629
+  _guid: 4c5f4eb8-d158-4d5c-911b-b1b5393db2f0
   _data:
     _collider: {fileID: 0}

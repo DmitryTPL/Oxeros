@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class WeaponPointView : View<WeaponPointPresenter>
+    public class ShieldPointView : View<ShieldPointPresenter>
     {
         [SerializeField] private EquipmentPointPresenter.Data _data;
 
