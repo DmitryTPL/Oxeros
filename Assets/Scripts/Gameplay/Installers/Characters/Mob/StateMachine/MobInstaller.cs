@@ -9,6 +9,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container.BindInstance(destroyCancellationToken).AsCached();
+            Container.BindInterfacesTo<ViewFactory>().AsCached();
 
             Container.BindInterfacesAndSelfTo<MobPresenter>().AsSingle();
             Container.BindInterfacesAndSelfTo<MobStateChangeObserverPresenter>().AsSingle();
