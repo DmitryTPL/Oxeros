@@ -10,6 +10,8 @@ namespace Gameplay
 {
     public class RotateAbilityPresenter : Presenter
     {
+        private const RigidbodyConstraints ConstraintsMask = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
         [Serializable]
         public class Data : PresenterViewSharedData
         {
@@ -21,6 +23,7 @@ namespace Gameplay
         private Data _data;
         private readonly IRotateAbility _rotateAbility;
         private readonly IAppTime _appTime;
+        private RigidbodyConstraints _initialConstraints;
 
         public RotateAbilityPresenter() { }
 
@@ -40,6 +43,8 @@ namespace Gameplay
             base.InitializeData();
 
             _data = GetSharedData<Data>();
+
+            _initialConstraints = _data.Rigidbody.constraints & ConstraintsMask;
         }
 
         private void DirectionChanged(Vector3 direction)
@@ -47,12 +52,19 @@ namespace Gameplay
             var rotation = GetRotation(direction, _data.Transform.rotation, _data.Rigidbody.angularVelocity,
                 _rotateAbility.Parameters.RotationSpeed, _rotateAbility.Parameters.RotationDamper);
 
+            if (_rotateAbility.Parameters.RotationSpeed > 0)
+            {
+                var otherConstraints = _data.Rigidbody.constraints & ~ConstraintsMask;
+                
+                _data.Rigidbody.constraints = otherConstraints | _initialConstraints;
+            }
+
             _data.Rigidbody.AddTorque(rotation * _data.Rigidbody.mass);
         }
 
         private void StopRotation(bool _)
         {
-            _data.Rigidbody.angularVelocity = Vector3.zero;
+            _data.Rigidbody.constraints |= ConstraintsMask;
         }
 
         private void ForceRotate(Vector3 direction)

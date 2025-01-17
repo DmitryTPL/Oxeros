@@ -7,7 +7,7 @@
 
         public override CharacterState State => CharacterState.EndDefence;
         public override CharacterTransition Transition => CharacterTransition.EndDefence;
-        
+
         public EndDefenceCharacterTransition(IDefenceInputData defenceInputData, ICharacterPersistentData characterPersistentData)
         {
             _defenceInputData = defenceInputData;

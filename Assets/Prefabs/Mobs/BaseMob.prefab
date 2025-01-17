@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7585aecf997644bd863bb1411f3e6817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 001e2bbd-d738-48e6-89af-c5cc105f19b4
+  _guid: bb09b698-02f6-4262-bd74-00603acab583
 --- !u!114 &7821130603493462452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8040f44b56848e24b98bb3793fd2e4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: c6317ce2-ed84-4b34-9881-0e54bdce320b
+  _guid: f7dd494d-7c7f-4e8b-9869-c17e4cf9114e
   _data:
     _rigidbody: {fileID: 3777467737960765225}
 --- !u!114 &7655900028684409599
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fd6b5cfcbd1584d869ea52f2315a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 5106e175-66b4-40f9-bc5b-1556b03227a1
+  _guid: 46f177eb-c272-4069-8da6-cd8157065fd7
   _currentState: 
 --- !u!54 &3777467737960765225
 Rigidbody:
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679d55c60b3f4d2293db34ba152c8a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 85876488-23ca-4853-8e50-09581b77fd17
+  _guid: db29f93f-f3f5-4cd6-aea5-0f2d46fcf69e
   _data:
     _expectedObjectTag: Player
     _areaCollider: {fileID: 0}
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31db0ea4bb3d400e8e72336595bfc2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: a85e9413-ec37-4ff3-b9c7-2cf80cfda2c8
+  _guid: 2f3d97ae-eb97-4105-bcfc-b51798c68aeb
   _data:
     _rigidbody: {fileID: 3777467737960765225}
 --- !u!1 &4618227543433981646
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f43d265c6a0e64eb5de7d8c36ee6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 7e461028-91a8-489a-ba17-141df1755c97
+  _guid: 67706bf0-c0fb-4132-a627-cde326a4cb1e
   _states:
   - name: 
     _state: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ef9911259548be9abfac2ec312488d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 74c647d7-ddf0-4f47-a4da-fa1716246bf6
+  _guid: 2c18fc19-9889-4e55-929b-233239944797
   _data:
     _areaCollider: {fileID: 0}
     _minPathLength: 1
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115d1bacb1944c5cb796a9a4e35a2083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 6b573b09-98ce-45d4-bdc2-888d1f5652bc
+  _guid: fc2ab495-c3b9-434f-a389-a02c6169961d
   _data:
     _rigidbody: {fileID: 3777467737960765225}
 --- !u!1 &5705298541302056618
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dbd7ac3b974d8e91ca97d0ccf379e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 591d2ce9-45a9-476c-aab9-d4bc7463af13
+  _guid: 549ebe91-198f-437c-8f6e-b35258b74a79
   _data:
     _defaultEquipmentPrefab: {fileID: 1169661499090954162, guid: 09b858deba5733d45bd0448da077a87d, type: 3}
 --- !u!114 &501602322651554179
@@ -1115,9 +1115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8b3eea02f24b5d8f684025634e38da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 34dfa05f-c915-47b4-a2ad-e1946a8147c2
+  _guid: 0dc558da-5c0d-484e-be57-9888af602d8b
   _data:
-    _root: {fileID: 1590369684362037496}
+    _mesh: {fileID: 6651418070911752426}
 --- !u!114 &5805702860260526823
 MonoBehaviour:
   m_ObjectHideFlags: 0

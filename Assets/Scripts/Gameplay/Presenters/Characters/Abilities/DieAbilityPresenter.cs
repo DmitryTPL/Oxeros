@@ -12,9 +12,9 @@ namespace Gameplay
         [Serializable]
         public class Data : PresenterViewSharedData
         {
-            [SerializeField] private GameObject _root;
+            [SerializeField] private GameObject _mesh;
 
-            public GameObject Root => _root;
+            public GameObject Mesh => _mesh;
         }
 
         public DieAbilityPresenter()
@@ -31,7 +31,7 @@ namespace Gameplay
         {
             if (health <= float.Epsilon)
             {
-                GetSharedData<Data>().Root.gameObject.SetActive(false);
+                GetSharedData<Data>().Mesh.SetActive(false);
             }
         }
     }

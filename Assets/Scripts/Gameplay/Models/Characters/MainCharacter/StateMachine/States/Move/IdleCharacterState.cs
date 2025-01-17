@@ -22,7 +22,7 @@ namespace Gameplay
         {
             await base.Enter();
 
-            _moveAbility.Move(Vector3.zero, 0);
+            _moveAbility.StopMovement();
             _rotateAbility.StopRotation();
         }
     }

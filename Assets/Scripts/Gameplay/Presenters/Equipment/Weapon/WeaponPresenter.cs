@@ -62,6 +62,7 @@ namespace Gameplay
             if (isHasDamageReceiver)
             {
                 damageReceiver.ReceiveDamage(_damageInfo);
+                _data.Collider.enabled = false;
             }
         }
     }

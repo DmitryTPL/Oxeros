@@ -6,6 +6,8 @@ namespace Gameplay
         Move,
         Attack,
         BeginDefence,
-        EndDefence
+        EndDefence,
+        Death,
+        Respawn,
     }
 }

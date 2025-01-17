@@ -10,6 +10,8 @@ namespace Gameplay
 {
     public class MoveAbilityPresenter : Presenter
     {
+        private const RigidbodyConstraints ConstraintsMask = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        
         [Serializable]
         public class Data : PresenterViewSharedData
         {
@@ -22,6 +24,7 @@ namespace Gameplay
         private readonly IAppTime _appTime;
         private Vector3 _goalVelocity;
         private readonly IMoveAbility _moveAbility;
+        private RigidbodyConstraints _initialConstraints;
 
         private Data _data;
 
@@ -45,11 +48,20 @@ namespace Gameplay
             base.InitializeData();
 
             _data = GetSharedData<Data>();
+
+            _initialConstraints = _data.Rigidbody.constraints & ConstraintsMask;
         }
 
         private void VelocityChanged(Velocity velocity)
         {
             var acceleration = GetAcceleration(velocity, _data.Rigidbody.linearVelocity, _moveAbility.Parameters.Acceleration, _moveAbility.Parameters.MaxAcceleration);
+
+            if (_moveAbility.Parameters.Acceleration > 0)
+            {
+                var otherConstraints = _data.Rigidbody.constraints & ~ConstraintsMask;
+                
+                _data.Rigidbody.constraints = otherConstraints | _initialConstraints;
+            }
 
             _data.Rigidbody.AddForce(acceleration, ForceMode.Acceleration);
         }
@@ -72,7 +84,7 @@ namespace Gameplay
 
         private void Stop(bool _)
         {
-            _data.Rigidbody.linearVelocity = Vector3.zero;
+            _data.Rigidbody.constraints |= ConstraintsMask;
         }
     }
 }

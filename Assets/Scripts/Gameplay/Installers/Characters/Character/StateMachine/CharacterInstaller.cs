@@ -31,6 +31,8 @@ namespace Gameplay
             Container.BindInterfacesTo<AttackCharacterState>().AsSingle();
             Container.BindInterfacesTo<BeginDefenceCharacterState>().AsSingle();
             Container.BindInterfacesTo<EndDefenceCharacterState>().AsSingle();
+            Container.BindInterfacesTo<DeathCharacterState>().AsSingle();
+            Container.BindInterfacesTo<RespawnCharacterState>().AsSingle();
         }
 
         private void InstallTransitions()
@@ -42,6 +44,8 @@ namespace Gameplay
             Container.BindInterfacesTo<AttackCharacterTransition>().AsSingle();
             Container.BindInterfacesTo<BeginDefenceCharacterTransition>().AsSingle();
             Container.BindInterfacesTo<EndDefenceCharacterTransition>().AsSingle();
+            Container.BindInterfacesTo<DeathCharacterTransition>().AsSingle();
+            Container.BindInterfacesTo<RespawnCharacterTransition>().AsSingle();
         }
     }
 }

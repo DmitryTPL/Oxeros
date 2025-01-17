@@ -11,6 +11,7 @@ namespace MVP
         [SerializeField] [ReadOnly] private string _guid;
 
         private TPresenter _presenter;
+        private bool _isEnabled;
 
         protected TPresenter Presenter
         {
@@ -38,6 +39,15 @@ namespace MVP
         public void Constructor(TPresenter presenter)
         {
             _presenter = presenter;
+
+            if (_isEnabled)
+            {
+                _presenter.OnEnable();
+            }
+            else
+            {
+                _presenter.OnDisable();
+            }
 
             _guid = presenter.Guid.ToString();
 
@@ -85,12 +95,26 @@ namespace MVP
 
         protected virtual void OnEnable()
         {
-            Presenter?.OnEnable();
+            if (Presenter == null)
+            {
+                _isEnabled = true;
+            }
+            else
+            {
+                Presenter.OnEnable();
+            }
         }
 
         protected virtual void OnDisable()
         {
-            Presenter?.OnDisable();
+            if (Presenter == null)
+            {
+                _isEnabled = false;
+            }
+            else
+            {
+                Presenter.OnDisable();
+            }
         }
 
         protected virtual void OnDestroy()
