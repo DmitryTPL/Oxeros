@@ -13,6 +13,7 @@ namespace Gameplay
 
             Container.BindInterfacesAndSelfTo<MobPresenter>().AsSingle();
             Container.BindInterfacesAndSelfTo<MobStateChangeObserverPresenter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LookAtCameraPresenter>().AsSingle();
 
             InstallStateMachine();
             InstallTransitions();

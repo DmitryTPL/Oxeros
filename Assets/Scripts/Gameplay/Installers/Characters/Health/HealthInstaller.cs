@@ -7,6 +7,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<HealthHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HealthBarPresenter>().AsSingle();
         }
     }
 }

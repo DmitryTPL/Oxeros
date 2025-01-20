@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -34,6 +35,9 @@ namespace MVP
         public Guid Guid => Presenter.Guid;
 
         protected virtual PresenterViewSharedData SharedData { get; private set; }
+        
+        // ReSharper disable once InconsistentNaming
+        public new CancellationToken destroyCancellationToken => gameObject.GetCancellationTokenOnDestroy();
 
         [Inject]
         public void Constructor(TPresenter presenter)
@@ -51,7 +55,7 @@ namespace MVP
 
             _guid = presenter.Guid.ToString();
 
-            gameObject.GetCancellationTokenOnDestroy().Register(presenter.InvokeDestroyCancellationToken);
+            destroyCancellationToken.Register(presenter.InvokeDestroyCancellationToken);
 
             TryUpdateSharedData();
 
