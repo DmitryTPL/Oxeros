@@ -16,6 +16,8 @@ namespace Gameplay
             public Vector3 LinearVelocity => _rigidbody.linearVelocity;
             public Vector3 AngularVelocity => _rigidbody.angularVelocity;
             public Quaternion Rotation => _rigidbody.transform.rotation;
+            
+            
         }
 
         private readonly ICharacterPerUpdateData _perUpdateData;

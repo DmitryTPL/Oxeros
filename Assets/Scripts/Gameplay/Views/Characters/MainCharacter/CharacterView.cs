@@ -1,3 +1,4 @@
+using System;
 using MVP;
 using UnityEngine;
 
@@ -8,5 +9,6 @@ namespace Gameplay
         [SerializeField] private CharacterPresenter.Data _data;
 
         protected override PresenterViewSharedData SharedData => _data;
+
     }
 }

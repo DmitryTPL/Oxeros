@@ -4,20 +4,20 @@ namespace Gameplay
 {
     public class BeginDefenceCharacterState : BaseCharacterState
     {
-        private readonly ICharacterPersistentData _persistentData;
+        private readonly IDefenceHandler _defenceHandler;
 
         public override CharacterState State => CharacterState.BeginDefence;
 
-        public BeginDefenceCharacterState(ICharacterPersistentData persistentData)
+        public BeginDefenceCharacterState(IDefenceHandler defenceHandler)
         {
-            _persistentData = persistentData;
+            _defenceHandler = defenceHandler;
         }
 
         public override async UniTask Enter()
         {
             await base.Enter();
 
-            _persistentData.IsDefending = true;
+            _defenceHandler.SetDefendingState(true);
         }
     }
 }

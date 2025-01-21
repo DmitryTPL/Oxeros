@@ -8,17 +8,17 @@ namespace Gameplay
         private readonly IMoveInputData _moveInputData;
         private readonly IMoveAbility _moveAbility;
         private readonly IRotateAbility _rotateAbility;
-        private readonly ICharacterPersistentData _persistentData;
+        private readonly IDefenceHandler _defenceHandler;
         private readonly IAttackAbility _attackAbility;
 
         public override CharacterState State => CharacterState.Attack;
 
-        public AttackCharacterState(IMoveInputData moveInputData, IMoveAbility moveAbility, IRotateAbility rotateAbility, ICharacterPersistentData persistentData,
+        public AttackCharacterState(IMoveInputData moveInputData, IMoveAbility moveAbility, IRotateAbility rotateAbility, IDefenceHandler defenceHandler,
             IAttackAbility attackAbility)
         {
             _moveAbility = moveAbility;
             _rotateAbility = rotateAbility;
-            _persistentData = persistentData;
+            _defenceHandler = defenceHandler;
             _attackAbility = attackAbility;
             _moveInputData = moveInputData;
         }
@@ -27,7 +27,7 @@ namespace Gameplay
         {
             await base.Enter();
 
-            _persistentData.IsDefending = false;
+            _defenceHandler.SetDefendingState(false);
 
             _attackAbility.BeginAttack();
         }

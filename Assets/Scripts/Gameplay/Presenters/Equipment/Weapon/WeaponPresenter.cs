@@ -56,12 +56,17 @@ namespace Gameplay
 
         public void TriggerEnter(Collider collider)
         {
-            var isHasDamageReceiver = collider.gameObject.TryGetComponent<IDamageReceiver>(out var damageReceiver)
-                                      || (collider.attachedRigidbody != null && collider.attachedRigidbody.TryGetComponent(out damageReceiver));
-
-            if (isHasDamageReceiver)
+            if (collider.gameObject.GetComponentsInChildren<IDamageBlocker>().Length > 0)
             {
-                damageReceiver.ReceiveDamage(_damageInfo);
+                _data.Collider.enabled = false;
+                return;
+            }
+
+            var damageReceivers = collider.gameObject.GetComponentsInChildren<IDamageReceiver>();
+
+            if (damageReceivers.Length > 0)
+            {
+                damageReceivers[0].ReceiveDamage(_damageInfo);
                 _data.Collider.enabled = false;
             }
         }

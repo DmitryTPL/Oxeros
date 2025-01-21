@@ -3,20 +3,20 @@
     public class BeginDefenceCharacterTransition : BaseCharacterTransition
     {
         private readonly IDefenceInputData _defenceInputData;
-        private readonly ICharacterPersistentData _persistentData;
+        private readonly IDefenceHandler _defenceHandler;
 
         public override CharacterState State => CharacterState.BeginDefence;
         public override CharacterTransition Transition => CharacterTransition.BeginDefence;
 
-        public BeginDefenceCharacterTransition(IDefenceInputData defenceInputData, ICharacterPersistentData persistentData)
+        public BeginDefenceCharacterTransition(IDefenceInputData defenceInputData, IDefenceHandler defenceHandler)
         {
             _defenceInputData = defenceInputData;
-            _persistentData = persistentData;
+            _defenceHandler = defenceHandler;
         }
 
         protected override bool Condition()
         {
-            return !_persistentData.IsDefending && _defenceInputData.InputAction.IsPressed();
+            return !_defenceHandler.IsDefending.Value && _defenceInputData.InputAction.IsPressed();
         }
     }
 }

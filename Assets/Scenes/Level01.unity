@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28215ef2c4594c4680a4e676ccfcb6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 07720276-06f6-4fc9-bae2-affbfb2424de
+  _guid: e26261b2-1aa2-4d6d-b80d-f96d286261c5
   _data:
     _camera: {fileID: 111804759}
 --- !u!1001 &122206172
@@ -8045,7 +8045,7 @@ MonoBehaviour:
   m_CollideAgainst:
     serializedVersion: 2
     m_Bits: 1
-  m_IgnoreTag: 
+  m_IgnoreTag: Shield
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8123,7 +8123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16129fc7fad14b8aab25b52071705e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: d9f70e62-0e65-4f15-9605-6265bee4e0bd
+  _guid: 0db8f984-bd2a-4d37-baeb-dcc5204ab9e1
   _data:
     _virtualCamera: {fileID: 919953236}
 --- !u!114 &919953239
@@ -15219,7 +15219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece39b4f65a846ee833c269c67be01da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: d9f628a8-bdb6-44c9-a269-d9e066b7a379
+  _guid: b9107ad8-0590-4516-ab5d-3f64466ece8a
   _data:
     _isFirstSpawn: 1
     _characterPrefab: {fileID: 5020191383429202377, guid: 767cb40bc7a165f4abf21eebabb7c834, type: 3}
@@ -15809,6 +15809,10 @@ PrefabInstance:
     - target: {fileID: 8174973267235256401, guid: 657ad6ba9f6c21c44b3d05a25228c30f, type: 3}
       propertyPath: _guid
       value: c3d5d870-2f04-48a7-a7e7-a0f4de624486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183805059538836762, guid: 657ad6ba9f6c21c44b3d05a25228c30f, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8216939943319367316, guid: 657ad6ba9f6c21c44b3d05a25228c30f, type: 3}
       propertyPath: _guid

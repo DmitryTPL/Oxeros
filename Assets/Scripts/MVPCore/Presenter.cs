@@ -24,8 +24,8 @@ namespace MVP
 
         void IInitializable.Initialize()
         {
-            InitializationCompleted?.Invoke();
             InitializeData();
+            InitializationCompleted?.Invoke();
         }
 
         public virtual void OnEnable()
@@ -58,9 +58,10 @@ namespace MVP
             _sharedData = data;
         }
         
-        public void InvokeDestroyCancellationToken()
+        public void CancelDestroyCancellationToken()
         {
             _destroyCancellationTokenSource.Cancel();
+            _destroyCancellationTokenSource.Dispose();
         }
 
         public override bool Equals(object obj)

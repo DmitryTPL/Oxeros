@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DamageDealer
   - DamageReceiver
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Mob
+  - Player
   - 
   - 
   - 

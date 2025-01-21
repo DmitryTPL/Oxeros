@@ -21,7 +21,7 @@ namespace Gameplay
         [Inject]
         public void AddDependencies(IViewFactory viewFactory)
         {
-            _viewFactory = viewFactory; 
+            _viewFactory = viewFactory;
         }
 
         protected override void InitializeData()
@@ -33,6 +33,7 @@ namespace Gameplay
             var equipment = _viewFactory.Create(_data.DefaultEquipmentPrefab);
 
             equipment.transform.SetParent(_data.Transform, false);
+            equipment.layer = _data.Transform.gameObject.layer;
         }
     }
 }

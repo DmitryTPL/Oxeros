@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8e345c838b4d85b9a484f1ff896b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: d8fcb6e0-cbc6-44a6-a3c5-816034132aad
+  _guid: c30d709a-e0d6-4d73-97bc-4a1a8e06995f
   _data:
     _damage: 1
 --- !u!114 &3208655491051387516
@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 220240041512616989}
   - component: {fileID: 611941981074415197}
   - component: {fileID: 2697938314539382149}
+  - component: {fileID: 2963506243183887386}
   m_Layer: 0
   m_Name: BaseWeapon
   m_TagString: Untagged
@@ -217,6 +218,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fc09974c4f4e419e53feb2f369b627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 4c5f4eb8-d158-4d5c-911b-b1b5393db2f0
+  _guid: 4ec87579-d60f-4f0a-8db0-607f618ec094
   _data:
     _collider: {fileID: 0}
+--- !u!54 &2963506243183887386
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631808834966484992}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

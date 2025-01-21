@@ -134,7 +134,7 @@ namespace $NAMESPACE$
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=96D28F0B6C545C428C67170B095F1F1A/Text/@EntryValue">[SerializeField] private $PRESENTER$.Data _data;
 
-        protected override PresenterViewSharedData SharedData =&gt; _data;</s:String>
+protected override PresenterViewSharedData SharedData =&gt; _data;</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/Scope/=A32573B30A4F5B408A5C00ECA4ED3B30/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=9BB83ED0FF792E47BAAB217C25589C77/Scope/=A32573B30A4F5B408A5C00ECA4ED3B30/Type/@EntryValue">InUnityCSharpProject</s:String>

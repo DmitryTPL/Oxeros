@@ -55,7 +55,7 @@ namespace MVP
 
             _guid = presenter.Guid.ToString();
 
-            destroyCancellationToken.Register(presenter.InvokeDestroyCancellationToken);
+            destroyCancellationToken.Register(presenter.CancelDestroyCancellationToken);
 
             TryUpdateSharedData();
 
