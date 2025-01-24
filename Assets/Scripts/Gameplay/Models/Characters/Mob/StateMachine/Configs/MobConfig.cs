@@ -11,6 +11,7 @@ namespace Gameplay
         [SerializeField] private float _maxAcceleration = 100;
         [SerializeField] private float _rotationSpeed = 100;
         [SerializeField] private float _rotationDamper = 0.5f;
+        [SerializeField] private float _minDistanceToApproach = 5f;
 
         [Header("Roam")]
         [SerializeField] private float _roamingMaxSpeed = 1;
@@ -29,5 +30,6 @@ namespace Gameplay
         public float RoamingMaxSpeed => _roamingMaxSpeed;
         public float AttackDistance => _attackDistance;
         public float Health => _health;
+        public float MinDistanceToApproach => _minDistanceToApproach;
     }
 }

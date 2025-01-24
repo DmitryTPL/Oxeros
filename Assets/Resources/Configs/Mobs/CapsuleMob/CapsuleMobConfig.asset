@@ -17,6 +17,7 @@ MonoBehaviour:
   _maxAcceleration: 100
   _rotationSpeed: 100
   _rotationDamper: 0.5
+  _minDistanceToApproach: 5
   _roamingMaxSpeed: 2
   _attackDistance: 1.3
   _health: 1
